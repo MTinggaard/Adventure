@@ -7,9 +7,5 @@ public class Main {
 
         userInterface.runGame();
 
-        // hej mikkel
-        // hej mikkel
-        // hej Ask
-
     }
 }
