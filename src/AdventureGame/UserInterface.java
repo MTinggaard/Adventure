@@ -20,18 +20,17 @@ public class UserInterface {
 
             if (command.equals("exit")) {
                 break;
-            } else if (command.equals("go north")) {
-                goNorth();
-            } else if (command.equals("go east")) {
-                goEast();
-            } else if (command.equals("go south")) {
-                goSouth();
-            } else if (command.equals("go west")) {
-                goWest();
-            } else if (command.equals("look")) {
-                lookRoom();
-            } else if (command.equals("help"))
-                help();
+            }
+
+            switch (command){
+                case "go north" -> goNorth();
+                case "go east" -> goEast();
+                case "go south" -> goSouth();
+                case "go west" -> goWest();
+                case "look" -> lookRoom();
+                case "help" -> help();
+            }
+
         }
         System.out.println("Goodbye!");
         scanner.close();
