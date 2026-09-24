@@ -5,7 +5,7 @@ public class Adventure {
     private Map map = new Map();
 
     public void startGame() {
-        map.BuildMap();
+        map.buildMap();
         player.setCurrentRoom(map.getStartRoom());
     }
 

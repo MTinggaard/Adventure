@@ -1,7 +1,9 @@
 package AdventureGame;
 
 public class Map {
-    public static Room BuildMap(){
+    private Room startRoom;
+
+    public void buildMap(){
         Room room1 = new Room("Classroom A379", "It's 8:30 early in the morning, sharp lights hits your eyes and jolts you awake. The room is full of emptiness, and something seems off.");
         Room room2 = new Room("3rd floor common area", "There are empty classrooms all around you, usually a space full of people. Where are all the people?");
         Room room3 = new Room("Classroom E212", "Something doesn't seem right, this door dont go to this classroom. The classroom is full of sleeping students, what is going on? I need to find some clues.");
@@ -31,12 +33,11 @@ public class Map {
 
         connectNorthSouth(room8, room5);
 
-
-        return room1;
+        startRoom = room1;
     }
 
     public Room getStartRoom(){
-        return BuildMap();
+        return startRoom;
     }
 
     private static void connectEastWest(Room a, Room b){
