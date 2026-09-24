@@ -7,44 +7,34 @@ public class Adventure {
     public void startGame() {
         map.BuildMap();
         player.setCurrentRoom(map.getStartRoom());
-
     }
 
-    public void goNorth() {
-        if (player.getCurrentRoom().getNorth() == null) {
-            System.out.println("There is no door north of you.");
-        } else player.setCurrentRoom(player.getCurrentRoom().getNorth());
+    public boolean goNorth() {
+        return player.move("north");
     }
 
-    public void goEast() {
-        if (player.getCurrentRoom().getEast() == null) {
-            System.out.println("There is no door east of you.");
-        } else player.setCurrentRoom(player.getCurrentRoom().getEast());
+    public boolean goEast() {
+        return player.move("east");
     }
 
-    public void goSouth() {
-        if (player.getCurrentRoom().getSouth() == null) {
-            System.out.println("There is no door south of you.");
-        } else player.setCurrentRoom(player.getCurrentRoom().getSouth());
+    public boolean goSouth() {
+        return player.move("south");
     }
 
-    public void goWest() {
-        if (player.getCurrentRoom().getWest() == null) {
-            System.out.println("There is no door west of you.");
-        } else player.setCurrentRoom(player.getCurrentRoom().getWest());
-    }
-
-    public void lookRoom() {
-        System.out.println("You are in " + player.getCurrentRoom().getName());
-        System.out.println(player.getCurrentRoom().getDescription());
+    public boolean goWest() {
+        return player.move("west");
     }
 
     public Player getPlayer() {
         return player;
     }
 
-    public Map getMap(){
+    public Map getMap() {
         return map;
+    }
+
+    public Room getCurrentRoom(){
+        return player.getCurrentRoom();
     }
 
 }
