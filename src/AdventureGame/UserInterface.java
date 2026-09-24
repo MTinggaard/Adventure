@@ -22,11 +22,11 @@ public class UserInterface {
                 break;
             }
 
-            switch (command){
-                case "go north" -> goNorth();
-                case "go east" -> goEast();
-                case "go south" -> goSouth();
-                case "go west" -> goWest();
+            switch (command) {
+                case "go north", "w", "up" -> goNorth();
+                case "go east", "d", "right" -> goEast();
+                case "go south", "s", "down" -> goSouth();
+                case "go west", "a", "left" -> goWest();
                 case "look" -> lookRoom();
                 case "help" -> help();
             }
@@ -41,13 +41,12 @@ public class UserInterface {
         System.out.println(currentRoom.getDescription());
     }
 
-    private void help(){
-        System.out.println("go north");
-        System.out.println("go east");
-        System.out.println("go south");
-        System.out.println("go west");
-        System.out.println("look");
-        System.out.println("exit");
+    public static final String ANSI_RESET = "\u001B[0m";
+    public static final String ANSI_GREEN = "\u001B[32m";
+
+    private void help() {
+        System.out.println("Below is a list of useable commands:");
+        System.out.print(ANSI_GREEN + "go north\ngo east\ngo south\ngo west\nlook\nexit" + ANSI_RESET + "\n");
     }
 
 
@@ -74,6 +73,4 @@ public class UserInterface {
             System.out.println("There is no door west of you.");
         } else currentRoom = currentRoom.getWest();
     }
-
-
 }
