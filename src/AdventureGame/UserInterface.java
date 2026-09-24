@@ -3,42 +3,38 @@ package AdventureGame;
 import java.util.Scanner;
 
 public class UserInterface {
+    Scanner scanner = new Scanner(System.in);
+    Adventure adventure = new Adventure();
 
-    Room currentRoom = Adventure.MakeAdventureMap();
-
-    public void runGame() {
-
-        Scanner scanner = new Scanner(System.in);
+    public void startProgram() {
+        adventure.startGame();
 
         while (true) {
 
-            System.out.print("You are in " + currentRoom.getName() + ": ");
-            System.out.println(currentRoom.getDescription());
+            adventure.lookRoom();
 
             System.out.print("Command -> ");
-            String command = scanner.nextLine().strip().toLowerCase();
+
+            String command = scanner.nextLine();
 
             if (command.equals("exit")) {
                 break;
             }
 
-            switch (command) {
-                case "go north", "w", "up" -> goNorth();
-                case "go east", "d", "right" -> goEast();
-                case "go south", "s", "down" -> goSouth();
-                case "go west", "a", "left" -> goWest();
-                case "look" -> lookRoom();
-                case "help" -> help();
-            }
-
+            parseInput(command);
         }
         System.out.println("Goodbye!");
-        scanner.close();
     }
 
-    private void lookRoom() {
-        System.out.println("You are in " + currentRoom.getName());
-        System.out.println(currentRoom.getDescription());
+    public void parseInput(String command) {
+        switch (command) {
+            case "go north", "w", "up" -> adventure.goNorth();
+            case "go east", "d", "right" -> adventure.goEast();
+            case "go south", "s", "down" -> adventure.goSouth();
+            case "go west", "a", "left" -> adventure.goWest();
+            case "look" -> adventure.lookRoom();
+            case "help" -> help();
+        }
     }
 
     public static final String ANSI_RESET = "\u001B[0m";
@@ -50,27 +46,4 @@ public class UserInterface {
     }
 
 
-    private void goNorth() {
-        if (currentRoom.getNorth() == null) {
-            System.out.println("There is no door north of you.");
-        } else currentRoom = currentRoom.getNorth();
-    }
-
-    private void goEast() {
-        if (currentRoom.getEast() == null) {
-            System.out.println("There is no door east of you.");
-        } else currentRoom = currentRoom.getEast();
-    }
-
-    private void goSouth() {
-        if (currentRoom.getSouth() == null) {
-            System.out.println("There is no door south of you.");
-        } else currentRoom = currentRoom.getSouth();
-    }
-
-    private void goWest() {
-        if (currentRoom.getWest() == null) {
-            System.out.println("There is no door west of you.");
-        } else currentRoom = currentRoom.getWest();
-    }
 }

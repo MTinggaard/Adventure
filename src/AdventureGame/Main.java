@@ -5,7 +5,7 @@ public class Main {
 
         UserInterface userInterface = new UserInterface();
 
-        userInterface.runGame();
+        userInterface.startProgram();
 
     }
 }
