@@ -12,7 +12,7 @@ public class UserInterface {
 
         while (true) {
 
-            System.out.print("You are in " + currentRoom.getName() + ": ");
+            System.out.print("You are in " + currentRoom.getName() + ". ");
             System.out.println(currentRoom.getDescription());
 
             System.out.print("Command -> ");
