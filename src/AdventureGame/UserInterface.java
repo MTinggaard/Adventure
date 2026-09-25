@@ -1,10 +1,12 @@
 package AdventureGame;
 
+
 import java.util.Scanner;
 
 public class UserInterface {
     Scanner scanner = new Scanner(System.in);
     Adventure adventure = new Adventure();
+    Position position = new Position(adventure);
 
     public void startProgram() throws InterruptedException {
         adventure.startGame();
@@ -49,6 +51,8 @@ public class UserInterface {
             }
             case "help" -> {
                 help();
+                position.mapposistion();
+
                 return true;
             }
             default -> {
@@ -68,6 +72,7 @@ public class UserInterface {
 
     private static void helpMessage(){
         System.out.println("Game did not recognize that command. Try 'help' to see the available commands.");
+
     }
 
     public void lookRoom() {
