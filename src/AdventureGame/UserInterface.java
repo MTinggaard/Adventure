@@ -51,8 +51,6 @@ public class UserInterface {
             }
             case "help" -> {
                 help();
-                position.mapposistion();
-
                 return true;
             }
             default -> {
@@ -68,6 +66,7 @@ public class UserInterface {
     private void help() {
         System.out.println("Below is a list of useable commands:");
         System.out.print(ANSI_GREEN + "go north\ngo east\ngo south\ngo west\nlook\nexit" + ANSI_RESET + "\n");
+        position.mapPosistion();
     }
 
     private static void helpMessage(){
