@@ -14,23 +14,7 @@ public class Position {
     public boolean mapposistion(){
         if(player.getCurrentRoom() == adventure.getMap().getRooms().get(0))
         {
-            System.out.println("|-------------|___|------------|___|------------|");
-            System.out.println("|    room            3rd floor         room     |");
-            System.out.println("|    A 379     ___  common area ___|   E 212    |");
-            System.out.println("|             |   |            |   |            |");
-            System.out.println("|----     ----|   |------------|   |----    ----|");
-            System.out.println("    |   |                               |   |");
-            System.out.println("|----    ----|    |------------|   |----    ----|");
-            System.out.println("|    room    |    | Conference |   |   Codelab  |");
-            System.out.println("|    A 202   |    |    room    |   |            |");
-            System.out.println("|            |    |            |   |            |");
-            System.out.println("|----    ----|    |------------|   |------------|");
-            System.out.println("    |   |           |   |         |   |");
-            System.out.println("|----     ----|___|---    -----|___|----    ----|");
-            System.out.println("|    room            cafeteria     |   bicycle  |");
-            System.out.println("|    A 009     ___              ___    cellar   |");
-            System.out.println("|             |   |            |   |            |");
-            System.out.println("|-------------|   |------------|   |------------|");
+           inromm1();
         }
         else if(player.getCurrentRoom() == adventure.getMap().getRooms().get(1)){System.out.println("|-------------|___|------------|___|------------|");
             System.out.println("|-------------|___|------------|___|------------|");
@@ -177,4 +161,33 @@ public class Position {
             System.out.println("|             |   |            |   |     **     |");
             System.out.println("|-------------|   |------------|   |------------|");}
     return true;}
+    public void inromm1(){
+        System.out.println("|-------------|___|------------|___|------------|");
+        System.out.println("|    room            3rd floor         room     |");
+        System.out.println("|    A 379     ___  common area ___|   E 212    |");
+        System.out.println("|             |   |            |   |            |");
+        System.out.println("|----     ----|   |------------|   |----    ----|");
+        System.out.println("    |   |                               |   |");
+        System.out.println("|----    ----|    |------------|   |----    ----|");
+        System.out.println("|    room    |    | Conference |   |   Codelab  |");
+        System.out.println("|    A 202   |    |    room    |   |            |");
+        System.out.println("|            |    |            |   |            |");
+        System.out.println("|----    ----|    |------------|   |------------|");
+        System.out.println("    |   |           |   |         |   |");
+        System.out.println("|----     ----|___|---    -----|___|----    ----|");
+        System.out.println("|    room            cafeteria     |   bicycle  |");
+        System.out.println("|    A 009     ___              ___    cellar   |");
+        System.out.println("|             |   |            |   |            |");
+        System.out.println("|-------------|   |------------|   |------------|");
+    }
+    public void inroom2(){}
+    public void inroom3(){}
+    public void inroom4(){}
+    public void inroom5(){}
+    public void inroom6(){}
+    public void inroom7(){}
+    public void inroom8(){}
+    public void inroom9(){}
 }
+
+
