@@ -1,180 +1,44 @@
 package AdventureGame;
 
 public class Position {
- Adventure adventure;
- Player player;
+    Adventure adventure;
+    Player player;
+    Visual visual = new Visual();
 
-
-    public Position(Adventure adventure){
-     this.adventure=adventure;
+    public Position(Adventure adventure) {
+        this.adventure = adventure;
         this.player = adventure.getPlayer();
     }
 
 
-    public boolean mapposistion(){
-        if(player.getCurrentRoom() == adventure.getMap().getRooms().get(0))
-        {
-            System.out.println("|-------------|___|------------|___|------------|");
-            System.out.println("|    room            3rd floor         room     |");
-            System.out.println("|    A 379     ___  common area ___|   E 212    |");
-            System.out.println("|             |   |            |   |            |");
-            System.out.println("|----     ----|   |------------|   |----    ----|");
-            System.out.println("    |   |                               |   |");
-            System.out.println("|----    ----|    |------------|   |----    ----|");
-            System.out.println("|    room    |    | Conference |   |   Codelab  |");
-            System.out.println("|    A 202   |    |    room    |   |            |");
-            System.out.println("|            |    |            |   |            |");
-            System.out.println("|----    ----|    |------------|   |------------|");
-            System.out.println("    |   |           |   |         |   |");
-            System.out.println("|----     ----|___|---    -----|___|----    ----|");
-            System.out.println("|    room            cafeteria     |   bicycle  |");
-            System.out.println("|    A 009     ___              ___    cellar   |");
-            System.out.println("|             |   |            |   |            |");
-            System.out.println("|-------------|   |------------|   |------------|");
+    public boolean mapposistion() {
+        if (player.getCurrentRoom() == adventure.getMap().getRooms().get(0)) {
+            visual.showroom1();
         }
-        else if(player.getCurrentRoom() == adventure.getMap().getRooms().get(1)){System.out.println("|-------------|___|------------|___|------------|");
-            System.out.println("|-------------|___|------------|___|------------|");
-            System.out.println("|    room            3rd floor         room     |");
-            System.out.println("|    A 379     ___  common area ___|   E 212    |");
-            System.out.println("|             |   |      **    |   |            |");
-            System.out.println("|----     ----|   |------------|   |----    ----|");
-            System.out.println("    |   |                               |   |");
-            System.out.println("|----    ----|    |------------|   |----    ----|");
-            System.out.println("|    room    |    | Conference |   |   Codelab  |");
-            System.out.println("|    A 202   |    |    room    |   |            |");
-            System.out.println("|            |    |            |   |            |");
-            System.out.println("|----    ----|    |------------|   |------------|");
-            System.out.println("    |   |           |   |         |   |");
-            System.out.println("|----     ----|___|---    -----|___|----    ----|");
-            System.out.println("|    room            cafeteria     |   bicycle  |");
-            System.out.println("|    A 009     ___              ___    cellar   |");
-            System.out.println("|             |   |            |   |            |");
-            System.out.println("|-------------|   |------------|   |------------|");}
-        else if(player.getCurrentRoom() == adventure.getMap().getRooms().get(2)){System.out.println("|-------------|___|------------|___|------------|");
-            System.out.println("|-------------|___|------------|___|------------|");
-            System.out.println("|    room            3rd floor         room     |");
-            System.out.println("|    A 379     ___  common area ___|   E 212    |");
-            System.out.println("|             |   |            |   |     **     |");
-            System.out.println("|----     ----|   |------------|   |----    ----|");
-            System.out.println("    |   |                               |   |");
-            System.out.println("|----    ----|    |------------|   |----    ----|");
-            System.out.println("|    room    |    | Conference |   |   Codelab  |");
-            System.out.println("|    A 202   |    |    room    |   |            |");
-            System.out.println("|            |    |            |   |            |");
-            System.out.println("|----    ----|    |------------|   |------------|");
-            System.out.println("    |   |           |   |         |   |");
-            System.out.println("|----     ----|___|---    -----|___|----    ----|");
-            System.out.println("|    room            cafeteria     |   bicycle  |");
-            System.out.println("|    A 009     ___              ___    cellar   |");
-            System.out.println("|             |   |            |   |            |");
-            System.out.println("|-------------|   |------------|   |------------|");}
-        else if(player.getCurrentRoom() == adventure.getMap().getRooms().get(3)){System.out.println("|-------------|___|------------|___|------------|");
-            System.out.println("|-------------|___|------------|___|------------|");
-            System.out.println("|    room            3rd floor         room     |");
-            System.out.println("|    A 379     ___  common area ___|   E 212    |");
-            System.out.println("|             |   |            |   |            |");
-            System.out.println("|----     ----|   |------------|   |----    ----|");
-            System.out.println("    |   |                               |   |");
-            System.out.println("|----    ----|    |------------|   |----    ----|");
-            System.out.println("|    room    |    | Conference |   |   Codelab  |");
-            System.out.println("|    A 202   |    |    room    |   |            |");
-            System.out.println("|     **     |    |            |   |            |");
-            System.out.println("|----    ----|    |------------|   |------------|");
-            System.out.println("    |   |           |   |         |   |");
-            System.out.println("|----     ----|___|---    -----|___|----    ----|");
-            System.out.println("|    room            cafeteria     |   bicycle  |");
-            System.out.println("|    A 009     ___              ___    cellar   |");
-            System.out.println("|             |   |            |   |            |");
-            System.out.println("|-------------|   |------------|   |------------|");}
-        else if(player.getCurrentRoom() == adventure.getMap().getRooms().get(4)){System.out.println("|-------------|___|------------|___|------------|");
-            System.out.println("|-------------|___|------------|___|------------|");
-            System.out.println("|    room            3rd floor         room     |");
-            System.out.println("|    A 379     ___  common area ___|   E 212    |");
-            System.out.println("|             |   |      **    |   |            |");
-            System.out.println("|----     ----|   |------------|   |----    ----|");
-            System.out.println("    |   |                               |   |");
-            System.out.println("|----    ----|    |------------|   |----    ----|");
-            System.out.println("|    room    |    | Conference |   |   Codelab  |");
-            System.out.println("|    A 202   |    |    room    |   |            |");
-            System.out.println("|            |    |            |   |            |");
-            System.out.println("|----    ----|    |------------|   |------------|");
-            System.out.println("    |   |           |   |         |   |");
-            System.out.println("|----     ----|___|---    -----|___|----    ----|");
-            System.out.println("|    room            cafeteria     |   bicycle  |");
-            System.out.println("|    A 009     ___              ___    cellar   |");
-            System.out.println("|             |   |            |   |            |");
-            System.out.println("|-------------|   |------------|   |------------|");}
-        else if(player.getCurrentRoom() == adventure.getMap().getRooms().get(5)){System.out.println("|-------------|___|------------|___|------------|");
-            System.out.println("|-------------|___|------------|___|------------|");
-            System.out.println("|    room            3rd floor         room     |");
-            System.out.println("|    A 379     ___  common area ___|   E 212    |");
-            System.out.println("|             |   |            |   |            |");
-            System.out.println("|----     ----|   |------------|   |----    ----|");
-            System.out.println("    |   |                               |   |");
-            System.out.println("|----    ----|    |------------|   |----    ----|");
-            System.out.println("|    room    |    | Conference |   |   Codelab  |");
-            System.out.println("|    A 202   |    |    room    |   |            |");
-            System.out.println("|            |    |            |   |     **     |");
-            System.out.println("|----    ----|    |------------|   |------------|");
-            System.out.println("    |   |           |   |         |   |");
-            System.out.println("|----     ----|___|---    -----|___|----    ----|");
-            System.out.println("|    room            cafeteria     |   bicycle  |");
-            System.out.println("|    A 009     ___              ___    cellar   |");
-            System.out.println("|             |   |            |   |            |");
-            System.out.println("|-------------|   |------------|   |------------|");}
-        else if(player.getCurrentRoom() == adventure.getMap().getRooms().get(6)){System.out.println("|-------------|___|------------|___|------------|");
-            System.out.println("|-------------|___|------------|___|------------|");
-            System.out.println("|    room            3rd floor         room     |");
-            System.out.println("|    A 379     ___  common area ___|   E 212    |");
-            System.out.println("|             |   |            |   |            |");
-            System.out.println("|----     ----|   |------------|   |----    ----|");
-            System.out.println("    |   |                               |   |");
-            System.out.println("|----    ----|    |------------|   |----    ----|");
-            System.out.println("|    room    |    | Conference |   |   Codelab  |");
-            System.out.println("|    A 202   |    |    room    |   |            |");
-            System.out.println("|            |    |            |   |            |");
-            System.out.println("|----    ----|    |------------|   |------------|");
-            System.out.println("    |   |           |   |         |   |");
-            System.out.println("|----     ----|___|---    -----|___|----    ----|");
-            System.out.println("|    room            cafeteria     |   bicycle  |");
-            System.out.println("|    A 009     ___              ___    cellar   |");
-            System.out.println("|      **     |   |            |   |            |");
-            System.out.println("|-------------|   |------------|   |------------|");}
-        else if(player.getCurrentRoom() == adventure.getMap().getRooms().get(7)){System.out.println("|-------------|___|------------|___|------------|");
-            System.out.println("|-------------|___|------------|___|------------|");
-            System.out.println("|    room            3rd floor         room     |");
-            System.out.println("|    A 379     ___  common area ___|   E 212    |");
-            System.out.println("|             |   |            |   |            |");
-            System.out.println("|----     ----|   |------------|   |----    ----|");
-            System.out.println("    |   |                               |   |");
-            System.out.println("|----    ----|    |------------|   |----    ----|");
-            System.out.println("|    room    |    | Conference |   |   Codelab  |");
-            System.out.println("|    A 202   |    |    room    |   |            |");
-            System.out.println("|            |    |            |   |            |");
-            System.out.println("|----    ----|    |------------|   |------------|");
-            System.out.println("    |   |           |   |         |   |");
-            System.out.println("|----     ----|___|---    -----|___|----    ----|");
-            System.out.println("|    room            cafeteria     |   bicycle  |");
-            System.out.println("|    A 009     ___              ___    cellar   |");
-            System.out.println("|             |   |     **     |   |            |");
-            System.out.println("|-------------|   |------------|   |------------|");}
-        else if(player.getCurrentRoom() == adventure.getMap().getRooms().get(8)){System.out.println("|-------------|___|------------|___|------------|");
-            System.out.println("|-------------|___|------------|___|------------|");
-            System.out.println("|    room            3rd floor         room     |");
-            System.out.println("|    A 379     ___  common area ___|   E 212    |");
-            System.out.println("|             |   |            |   |            |");
-            System.out.println("|----     ----|   |------------|   |----    ----|");
-            System.out.println("    |   |                               |   |");
-            System.out.println("|----    ----|    |------------|   |----    ----|");
-            System.out.println("|    room    |    | Conference |   |   Codelab  |");
-            System.out.println("|    A 202   |    |    room    |   |            |");
-            System.out.println("|            |    |            |   |            |");
-            System.out.println("|----    ----|    |------------|   |------------|");
-            System.out.println("    |   |           |   |         |   |");
-            System.out.println("|----     ----|___|---    -----|___|----    ----|");
-            System.out.println("|    room            cafeteria     |   bicycle  |");
-            System.out.println("|    A 009     ___              ___    cellar   |");
-            System.out.println("|             |   |            |   |     **     |");
-            System.out.println("|-------------|   |------------|   |------------|");}
-    return true;}
+        else if (player.getCurrentRoom() == adventure.getMap().getRooms().get(1)) {
+            visual.showroom2();
+        }
+        else if (player.getCurrentRoom() == adventure.getMap().getRooms().get(2)) {
+            visual.showroom3();
+        }
+        else if (player.getCurrentRoom() == adventure.getMap().getRooms().get(3)) {
+            visual.showroom4();
+        }
+        else if (player.getCurrentRoom() == adventure.getMap().getRooms().get(4)) {
+            visual.showroom5();
+        }
+        else if (player.getCurrentRoom() == adventure.getMap().getRooms().get(5)) {
+            visual.showroom6();
+        }
+        else if (player.getCurrentRoom() == adventure.getMap().getRooms().get(6)) {
+            visual.showroom7();
+        }
+        else if (player.getCurrentRoom() == adventure.getMap().getRooms().get(7)) {
+            visual.showroom8();
+        }
+        else if (player.getCurrentRoom() == adventure.getMap().getRooms().get(8)) {
+            visual.showroom9();
+        }
+        return true;
+    }
 }

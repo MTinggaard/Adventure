@@ -66,7 +66,7 @@ public class UserInterface {
     private void help() {
         System.out.println("Below is a list of useable commands:");
         System.out.print(ANSI_GREEN + "go north\ngo east\ngo south\ngo west\nlook\nexit" + ANSI_RESET + "\n");
-        position.mapPosistion();
+        position.mapposistion();
     }
 
     private static void helpMessage(){
