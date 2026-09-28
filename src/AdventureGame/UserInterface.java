@@ -1,6 +1,5 @@
 package AdventureGame;
 
-
 import java.util.Scanner;
 
 public class UserInterface {
@@ -32,6 +31,15 @@ public class UserInterface {
     }
 
     public boolean parseInput(String command) {
+        if(command.contains("take")){
+            String[] splitCommand = command.split(" ");
+            if(splitCommand.length > 0){
+                adventure.getPlayer().takeItem(splitCommand[1]);
+            }
+
+            return true;
+        }
+
         switch (command) {
             case "go north", "w", "up" -> {
                 return adventure.goNorth();
@@ -53,9 +61,6 @@ public class UserInterface {
                 help();
                 return true;
             }
-//            case command.indexOf("take") -> {
-//                adventure.getPlayer().takeItem()
-//            }
 
             default -> {
                 helpMessage();

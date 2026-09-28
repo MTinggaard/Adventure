@@ -68,16 +68,14 @@ public class Room {
     }
 
     public ArrayList<Item> getItems(){
-        ArrayList<Item> roomItems = new ArrayList<>();
-        for (Item item : items){
-            roomItems.add(item);
-        }
-        return roomItems;
+        return items;
     }
 
     public Item findItem(String shortName){
-        if (this.items.contains(shortName)){
-            return this.items.get(this.items.indexOf(shortName));
+        for (Item item : items){
+            if(item.getShortName().equals(shortName)){
+                return item;
+            }
         }
         return null;
     }

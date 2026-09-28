@@ -6,6 +6,7 @@ public class Player {
     private Room currentRoom;
     private ArrayList<Item> inventory;
 
+
     public Room getCurrentRoom() {
         return currentRoom;
     }
@@ -49,17 +50,16 @@ public class Player {
     }
 
     public Item takeItem(String shortName) {
-        for (Item item : currentRoom.getItems()) {
-            if (currentRoom.getItems().contains(shortName)) {
-                addItem(item);
-                return item;
-            }
+        if (currentRoom.findItem(shortName) != null) {
+            addItem(currentRoom.findItem(shortName));
+            currentRoom.removeItem(currentRoom.findItem(shortName));
+            return findItem(shortName);
         }
         return null;
     }
 
     public Item dropItem(String shortName) {
-        if(findItem(shortName) != null){
+        if (findItem(shortName) != null) {
             removeItem(findItem(shortName));
             currentRoom.addItem(findItem(shortName));
             return findItem(shortName);
@@ -69,7 +69,7 @@ public class Player {
 
     public Item findItem(String shortName) {
         for (Item item : getInventory()) {
-            if (getInventory().contains(shortName)) {
+            if (item.getShortName().equals(shortName)) {
                 return item;
             }
         }

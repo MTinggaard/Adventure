@@ -1,11 +1,14 @@
 package AdventureGame;
 
+import java.util.ArrayList;
+
 public class Adventure {
     private Player player = new Player();
     private Map map = new Map();
 
     public void startGame() {
         map.buildMap();
+        player.setInventory(new ArrayList<Item>());
         player.setCurrentRoom(map.getStartRoom());
     }
 

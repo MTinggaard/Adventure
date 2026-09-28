@@ -8,6 +8,7 @@ public class Map {
 
     public void buildMap(){
         Room room1 = new Room("Classroom A379", "It's 8:30 early in the morning, sharp lights hits your eyes and jolts you awake. The room is full of emptiness, and something seems off.", new ArrayList<Item>());
+        room1.addItem(new Item("banana", "Banana"));
         rooms.add(room1);
         Room room2 = new Room("3rd floor common area", "There are empty classrooms all around you, usually a space full of people. Where are all the people?", new ArrayList<Item>());
         rooms.add(room2);
