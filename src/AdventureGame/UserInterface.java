@@ -23,7 +23,7 @@ public class UserInterface {
                 break;
             }
 
-            if(!parseInput(command)){
+            if (!parseInput(command)) {
                 System.out.println("There is no door in that direction");
                 Thread.sleep(1000);
             }
@@ -53,6 +53,10 @@ public class UserInterface {
                 help();
                 return true;
             }
+//            case command.indexOf("take") -> {
+//                adventure.getPlayer().takeItem()
+//            }
+
             default -> {
                 helpMessage();
                 return true;
@@ -69,7 +73,7 @@ public class UserInterface {
         position.mapposistion();
     }
 
-    private static void helpMessage(){
+    private static void helpMessage() {
         System.out.println("Game did not recognize that command. Try 'help' to see the available commands.");
 
     }
@@ -77,6 +81,12 @@ public class UserInterface {
     public void lookRoom() {
         System.out.println("You are in " + adventure.getCurrentRoom().getName());
         System.out.println(adventure.getCurrentRoom().getDescription());
+        if (!adventure.getCurrentRoom().getItems().isEmpty()) {
+            System.out.println("Items:");
+            for (int i = 0; i < adventure.getCurrentRoom().getItems().size(); i++) {
+                System.out.println(" - " + adventure.getCurrentRoom().getItems().get(i).getLongName());
+            }
+        } else System.out.println("The room is empty 😞");
     }
 
 }

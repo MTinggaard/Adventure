@@ -10,11 +10,11 @@ public class Item {
         this.shortName = shortName;
     }
 
-    public void getShortName() {
-        System.out.println(shortName);
+    public String getShortName() {
+        return shortName;
     }
 
-    public void getLongName() {
-        System.out.println(longName);
+    public String getLongName() {
+        return longName;
     }
 }
