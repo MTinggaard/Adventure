@@ -62,7 +62,7 @@ public class Player {
         if (findItem(shortName) != null) {
             currentRoom.addItem(findItem(shortName));
             removeItem(findItem(shortName));
-            return findItem(shortName);
+            return currentRoom.findItem(shortName);
         }
         return null;
     }

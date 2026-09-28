@@ -33,24 +33,22 @@ public class UserInterface {
     public boolean parseInput(String command) {
         if (command.contains("take")) {
             String[] splitCommand = command.split(" ");
-            if (splitCommand.length > 0) {
-                adventure.getPlayer().takeItem(splitCommand[1]);
+            if (splitCommand.length > 1) {
+                if(adventure.getPlayer().takeItem(splitCommand[1]) == null){
+                    System.out.println("That item does not exist");
+                }
             }
-            if (adventure.getPlayer().takeItem(splitCommand[1]) == null) {
-                System.out.println("That item does not exist");
-            }
+
 
             return true;
         }
         if (command.contains("drop")) {
             String[] splitCommand = command.split(" ");
-            if (splitCommand.length > 0) {
-                adventure.getPlayer().dropItem(splitCommand[1]);
+            if (splitCommand.length > 1) {
+                if (adventure.getPlayer().dropItem(splitCommand[1]) == null){
+                    System.out.println("That item is not in you're inventory");
+                }
             }
-            if (adventure.getPlayer().dropItem(splitCommand[1]) == null) {
-                System.out.println("That item is not in you're inventory");
-            }
-
             return true;
         }
 
