@@ -17,7 +17,7 @@ public class UserInterface {
 
             System.out.print("Command -> ");
 
-            String command = scanner.nextLine();
+            String command = scanner.nextLine().strip().toLowerCase();
 
             if (command.equals("exit")) {
                 break;
