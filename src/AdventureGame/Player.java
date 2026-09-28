@@ -60,8 +60,8 @@ public class Player {
 
     public Item dropItem(String shortName) {
         if (findItem(shortName) != null) {
-            removeItem(findItem(shortName));
             currentRoom.addItem(findItem(shortName));
+            removeItem(findItem(shortName));
             return findItem(shortName);
         }
         return null;

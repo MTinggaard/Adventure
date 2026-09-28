@@ -39,6 +39,13 @@ public class UserInterface {
 
             return true;
         }
+        if(command.contains("drop")){
+            String[] splitCommand = command.split(" ");
+            if(splitCommand.length > 0){
+                adventure.getPlayer().dropItem(splitCommand[1]);
+            }
+            return true;
+        }
 
         switch (command) {
             case "go north", "w", "up" -> {
