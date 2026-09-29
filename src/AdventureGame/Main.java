@@ -7,5 +7,6 @@ public class Main {
 
         userInterface.startProgram();
 
+        System.out.println("hej");
     }
 }
