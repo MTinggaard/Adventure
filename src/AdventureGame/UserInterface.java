@@ -11,6 +11,7 @@ public class UserInterface {
         adventure.startGame();
 
         while (true) {
+            Thread.sleep(1000);
 
             lookRoom();
 
@@ -34,18 +35,16 @@ public class UserInterface {
         if (command.contains("take")) {
             String[] splitCommand = command.split(" ");
             if (splitCommand.length > 1) {
-                if(adventure.getPlayer().takeItem(splitCommand[1]) == null){
+                if (adventure.getPlayer().takeItem(splitCommand[1]) == null) {
                     System.out.println("That item does not exist");
                 }
             }
-
-
             return true;
         }
         if (command.contains("drop")) {
             String[] splitCommand = command.split(" ");
             if (splitCommand.length > 1) {
-                if (adventure.getPlayer().dropItem(splitCommand[1]) == null){
+                if (adventure.getPlayer().dropItem(splitCommand[1]) == null) {
                     System.out.println("That item is not in you're inventory");
                 }
             }
@@ -91,8 +90,14 @@ public class UserInterface {
 
     private void help() {
         System.out.println("Below is a list of useable commands:");
-        System.out.print(ANSI_GREEN + "go north\ngo east\ngo south\ngo west\nlook\nexit\ntake <item>\n drop <item>\nlook inventory" + ANSI_RESET + "\n");
-        position.mapposistion();
+        System.out.println("Direction commands:");
+        System.out.println(" - go north\n - go east\n - go south\n - go west");
+        System.out.println("Item commands:");
+        System.out.println(" - take <item>\n - drop <item>\n - look inventory");
+        System.out.println("Misc:");
+        System.out.println(" - look\n - help\n - exit");
+        //System.out.print(ANSI_GREEN + "go north\ngo east\ngo south\ngo west\nlook\nexit\ntake <item>\ndrop <item>\nlook inventory" + ANSI_RESET + "\n");
+        position.mapPosistion();
     }
 
     private static void helpMessage() {
@@ -108,14 +113,16 @@ public class UserInterface {
             for (int i = 0; i < adventure.getCurrentRoom().getItems().size(); i++) {
                 System.out.println(" - " + adventure.getCurrentRoom().getItems().get(i).getLongName());
             }
-        } else System.out.println("There are no items in the room 😞");
+        } else System.out.println("The room is empty");
     }
 
-    public void lookInventory(){
-        System.out.println("You are carrying:");
-        for (Item item : adventure.getPlayer().getInventory()){
-            System.out.println(" - " + item.getLongName());
-        }
+    public void lookInventory() {
+        if (!adventure.getPlayer().getInventory().isEmpty()) {
+            System.out.println("You are carrying:");
+            for (Item item : adventure.getPlayer().getInventory()) {
+                System.out.println(" - " + item.getLongName());
+            }
+        } else System.out.println("Your inventory is empty");
     }
 
 }

@@ -11,7 +11,7 @@ public class Position {
     }
 
 
-    public boolean mapposistion() {
+    public boolean mapPosistion() {
         if (player.getCurrentRoom() == adventure.getMap().getRooms().get(0)) {
             visual.showroom1();
         }
