@@ -10,8 +10,7 @@ public class Position {
         this.player = adventure.getPlayer();
     }
 
-
-    public boolean mapPosistion() {
+    public void mapPosition() {
         if (player.getCurrentRoom() == adventure.getMap().getRooms().get(0)) {
             visual.showroom1();
         }
@@ -39,6 +38,5 @@ public class Position {
         else if (player.getCurrentRoom() == adventure.getMap().getRooms().get(8)) {
             visual.showroom9();
         }
-        return true;
     }
 }
