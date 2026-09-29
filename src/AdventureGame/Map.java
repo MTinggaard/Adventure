@@ -16,13 +16,13 @@ public class Map {
         rooms.add(room3);
         Room room4 = new Room("Classroom A202","The small classroom is fully overgrown, you see birds flying around, almost like a jungle.", new ArrayList<Item>());
         rooms.add(room4);
-        Room room5 = new Room("Conference room", "as you enter the conference room, you see giant pillars made of marbel aswell as a throne made of bones. A chill runs down your spine, do you hear boss music?", new ArrayList<Item>());
+        Room room5 = new Room("Conference room", "As you enter the conference room, you see giant pillars made of marbel aswell as a throne made of bones. A chill runs down your spine, do you hear boss music?", new ArrayList<Item>());
         rooms.add(room5);
         Room room6 = new Room("Codelab", "You enter codelab and finally see a familiar face. Its Tobias!", new ArrayList<Item>());
         rooms.add(room6);
         Room room7 = new Room("Classroom A009", "A blacksmith you think to yourself, this used to ba a 3D lab. When you enter the room a strong scent of smoke fills the area and a blasting heat makes you sweat.", new ArrayList<Item>());
         rooms.add(room7);
-        Room room8 = new Room("Cafeteria", "A empty room but finally something you recognise as normal. The smell of food makes your belly growl but something seems off", new ArrayList<Item>());
+        Room room8 = new Room("Cafeteria", "An empty room but finally something you recognise as normal. The smell of food makes your belly growl but something seems off", new ArrayList<Item>());
         rooms.add(room8);
         Room room9 = new Room("Bicycle cellar", "you open the door to an almost pitch black cave. This is not the bike cellar i remember, you think while gathering the courage to go further in", new ArrayList<Item>());
         rooms.add(room9);

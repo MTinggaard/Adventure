@@ -6,7 +6,7 @@ public class Visual {
         System.out.println("|-------------|___|------------|___|------------|");
         System.out.println("|    room            3rd floor         room     |");
         System.out.println("|    A 379     ___  common area ___|   E 212    |");
-        System.out.println("|     **      |   |            |   |            |");
+        System.out.println("|     👱🏻‍♂️      |   |            |   |            |");
         System.out.println("|----     ----|   |------------|   |----    ----|");
         System.out.println("    |   |                               |   |");
         System.out.println("|----    ----|    |------------|   |----    ----|");
@@ -24,7 +24,7 @@ public class Visual {
         System.out.println("|-------------|___|------------|___|------------|");
         System.out.println("|    room            3rd floor         room     |");
         System.out.println("|    A 379     ___  common area ___|   E 212    |");
-        System.out.println("|             |   |      **    |   |            |");
+        System.out.println("|             |   |     👱🏻‍     |   |            |");
         System.out.println("|----     ----|   |------------|   |----    ----|");
         System.out.println("    |   |                               |   |");
         System.out.println("|----    ----|    |------------|   |----    ----|");
@@ -42,7 +42,7 @@ public class Visual {
         System.out.println("|-------------|___|------------|___|------------|");
         System.out.println("|    room            3rd floor         room     |");
         System.out.println("|    A 379     ___  common area ___|   E 212    |");
-        System.out.println("|             |   |            |   |     **     |");
+        System.out.println("|             |   |            |   |     👱🏻‍     |");
         System.out.println("|----     ----|   |------------|   |----    ----|");
         System.out.println("    |   |                               |   |");
         System.out.println("|----    ----|    |------------|   |----    ----|");
@@ -66,7 +66,7 @@ public class Visual {
         System.out.println("|----    ----|    |------------|   |----    ----|");
         System.out.println("|    room    |    | Conference |   |   Codelab  |");
         System.out.println("|    A 202   |    |    room    |   |            |");
-        System.out.println("|     **     |    |            |   |            |");
+        System.out.println("|     👱🏻‍     |    |            |   |            |");
         System.out.println("|----    ----|    |----    ----|   |----    ----|");
         System.out.println("    |   |              |   |           |   |");
         System.out.println("|----     ----|___|----    ----|___|----    ----|");
@@ -84,7 +84,7 @@ public class Visual {
         System.out.println("|----    ----|    |------------|   |----    ----|");
         System.out.println("|    room    |    | Conference |   |   Codelab  |");
         System.out.println("|    A 202   |    |    room    |   |            |");
-        System.out.println("|            |    |     **     |   |            |");
+        System.out.println("|            |    |     👱🏻‍     |   |            |");
         System.out.println("|----    ----|    |----    ----|   |----    ----|");
         System.out.println("     |   |            |   |             |   |");
         System.out.println("|----     ----|___|---    -----|___|----    ----|");
@@ -102,7 +102,7 @@ public class Visual {
         System.out.println("|----    ----|    |------------|   |----    ----|");
         System.out.println("|    room    |    | Conference |   |   Codelab  |");
         System.out.println("|    A 202   |    |    room    |   |            |");
-        System.out.println("|            |    |            |   |     **     |");
+        System.out.println("|            |    |            |   |     👱🏻‍     |");
         System.out.println("|----    ----|    |----    ----|   |----    ----|");
         System.out.println("    |   |             |   |            |   |");
         System.out.println("|----     ----|___|---    -----|___|----    ----|");
@@ -126,7 +126,7 @@ public class Visual {
         System.out.println("|----     ----|___|---    -----|___|----    ----|");
         System.out.println("|    room            cafeteria     |   bicycle  |");
         System.out.println("|    A 009     ___              ___    cellar   |");
-        System.out.println("|      **     |   |            |   |            |");
+        System.out.println("|       👱🏻‍    |   |            |   |            |");
         System.out.println("|-------------|   |------------|   |------------|");}
     public void showroom8(){
         System.out.println("|-------------|___|------------|___|------------|");
@@ -144,7 +144,7 @@ public class Visual {
         System.out.println("|----     ----|___|---    -----|___|----    ----|");
         System.out.println("|    room            cafeteria     |   bicycle  |");
         System.out.println("|    A 009     ___              ___    cellar   |");
-        System.out.println("|             |   |     **     |   |            |");
+        System.out.println("|             |   |     👱🏻     |   |            |");
         System.out.println("|-------------|   |------------|   |------------|");}
     public void showroom9(){
         System.out.println("|-------------|___|------------|___|------------|");
@@ -162,7 +162,7 @@ public class Visual {
         System.out.println("|----     ----|___|----    ----|___|----    ----|");
         System.out.println("|    room            cafeteria     |   bicycle  |");
         System.out.println("|    A 009     ___              ___    cellar   |");
-        System.out.println("|             |   |            |   |     **     |");
+        System.out.println("|             |   |            |   |     👱🏻     |");
         System.out.println("|-------------|   |------------|   |------------|");}
 
 }

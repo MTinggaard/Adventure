@@ -104,11 +104,11 @@ public class UserInterface {
         System.out.println("You are in " + adventure.getCurrentRoom().getName());
         System.out.println(adventure.getCurrentRoom().getDescription());
         if (!adventure.getCurrentRoom().getItems().isEmpty()) {
-            System.out.println("Items:");
+            System.out.println("Items in the room:");
             for (int i = 0; i < adventure.getCurrentRoom().getItems().size(); i++) {
                 System.out.println(" - " + adventure.getCurrentRoom().getItems().get(i).getLongName());
             }
-        } else System.out.println("The room is empty 😞");
+        } else System.out.println("There are no items in the room 😞");
     }
 
     public void lookInventory(){
