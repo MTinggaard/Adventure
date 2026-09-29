@@ -96,7 +96,7 @@ public class UserInterface {
         System.out.println("Misc:");
         System.out.println(" - look\n - help\n - exit");
         //System.out.print(ANSI_GREEN + "go north\ngo east\ngo south\ngo west\nlook\nexit\ntake <item>\ndrop <item>\nlook inventory" + ANSI_RESET + "\n");
-        position.mapposistion();
+        position.mapPosistion();
     }
 
     private static void helpMessage() {
