@@ -89,7 +89,13 @@ public class UserInterface {
 
     private void help() {
         System.out.println("Below is a list of useable commands:");
-        System.out.print(ANSI_GREEN + "go north\ngo east\ngo south\ngo west\nlook\nexit\ntake <item>\ndrop <item>\nlook inventory" + ANSI_RESET + "\n");
+        System.out.println("Direction commands:");
+        System.out.println(" - go north\n - go east\n - go south\n - go west");
+        System.out.println("Item commands:");
+        System.out.println(" - take <item>\n - drop <item>\n - look inventory");
+        System.out.println("Misc:");
+        System.out.println(" - look\n - help\n - exit");
+        //System.out.print(ANSI_GREEN + "go north\ngo east\ngo south\ngo west\nlook\nexit\ntake <item>\ndrop <item>\nlook inventory" + ANSI_RESET + "\n");
         position.mapposistion();
     }
 
