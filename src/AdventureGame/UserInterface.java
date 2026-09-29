@@ -35,7 +35,7 @@ public class UserInterface {
         if (command.contains("take")) {
             String[] splitCommand = command.split(" ");
             if (splitCommand.length > 1) {
-                if (adventure.getPlayer().takeItem(splitCommand[1]) == null) {
+                if (adventure.takeItem(splitCommand[1]) == null) {
                     System.out.println("That item does not exist");
                 }
             }
@@ -44,7 +44,7 @@ public class UserInterface {
         if (command.contains("drop")) {
             String[] splitCommand = command.split(" ");
             if (splitCommand.length > 1) {
-                if (adventure.getPlayer().dropItem(splitCommand[1]) == null) {
+                if (adventure.dropItem(splitCommand[1]) == null) {
                     System.out.println("That item is not in you're inventory");
                 }
             }
@@ -102,7 +102,6 @@ public class UserInterface {
 
     private static void helpMessage() {
         System.out.println("Game did not recognize that command. Try 'help' to see the available commands.");
-
     }
 
     public void lookRoom() {
@@ -117,9 +116,9 @@ public class UserInterface {
     }
 
     public void lookInventory() {
-        if (!adventure.getPlayer().getInventory().isEmpty()) {
+        if (!adventure.getInventory().isEmpty()) {
             System.out.println("You are carrying:");
-            for (Item item : adventure.getPlayer().getInventory()) {
+            for (Item item : adventure.getInventory()) {
                 System.out.println(" - " + item.getLongName());
             }
         } else System.out.println("Your inventory is empty");

@@ -40,6 +40,18 @@ public class Adventure {
         return player.getCurrentRoom();
     }
 
+    public ArrayList<Item> getInventory(){
+        return player.getInventory();
+    }
+
+    public Item takeItem(String shortName){
+        return player.takeItem(shortName);
+    }
+
+    public Item dropItem(String shortName){
+        return player.dropItem(shortName);
+    }
+
 }
 
 
