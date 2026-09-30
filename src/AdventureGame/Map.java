@@ -8,7 +8,7 @@ public class Map {
 
     public void buildMap(){
         Room room1 = new Room("Classroom A379", "It's 8:30 early in the morning, sharp lights hits your eyes and jolts you awake. The room is full of emptiness, and something seems off.", new ArrayList<Item>());
-        room1.addItem(new Liquid("health potion", "a bright red health potion in a glass bottle", 20));
+        room1.addItem(new Liquid("potion", "a bright red health potion in a glass bottle", 20));
         rooms.add(room1);
 
         Room room2 = new Room("3rd floor common area", "There are empty classrooms all around you, usually a space full of people. Where are all the people?", new ArrayList<Item>());
@@ -33,7 +33,7 @@ public class Map {
         rooms.add(room7);
 
         Room room8 = new Room("Cafeteria", "An empty room but finally something you recognise as normal. The smell of food makes your belly growl but something seems off", new ArrayList<Item>());
-        room8.addItem(new Food("golden apple","a gold shining apple that lights up the room", 100));
+        room8.addItem(new Food("apple","a gold shining apple that lights up the room", 100));
         rooms.add(room8);
 
         Room room9 = new Room("Bicycle cellar", "you open the door to an almost pitch black cave. This is not the bike cellar i remember, you think while gathering the courage to go further in", new ArrayList<Item>());

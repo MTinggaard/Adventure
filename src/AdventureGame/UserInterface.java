@@ -1,5 +1,7 @@
 package AdventureGame;
 
+import jdk.swing.interop.SwingInterOpUtils;
+
 import java.util.Scanner;
 
 public class UserInterface {
@@ -14,6 +16,7 @@ public class UserInterface {
             Thread.sleep(1000);
 
             lookRoom();
+            healthStatus();
 
             System.out.print("Command -> ");
 
@@ -47,6 +50,13 @@ public class UserInterface {
                 if (adventure.dropItem(splitCommand[1]) == null) {
                     System.out.println("That item is not in you're inventory");
                 }
+            }
+            return true;
+        }
+        if (command.contains("consume")) {
+            String[] splitCommand = command.split(" ");
+            if (splitCommand.length > 1) {
+                consume(splitCommand[1]);
             }
             return true;
         }
@@ -89,7 +99,25 @@ public class UserInterface {
             }
         }
     }
-
+    public void healthStatus(){
+        int playerHealth=adventure.getPlayerHealth();
+        System.out.print("Health: "+playerHealth+" ");
+        if( playerHealth >= 100) {
+            System.out.println("you are in perfect health");
+        }
+        if( playerHealth <= 99 &&  playerHealth >=50 ){
+            System.out.println("you are in good health");
+        }
+        if( playerHealth <= 49 &&  playerHealth >=25 ){
+            System.out.println("you are not looking so good, find something to eat");
+        }
+        if( playerHealth <= 24 &&  playerHealth >=1 ){
+            System.out.println("you are struggling to breath");
+        }
+        if( playerHealth <=0 ){
+            System.out.println("you are dead");
+        }
+    }
     public static final String ANSI_RESET = "\u001B[0m";
     public static final String ANSI_GREEN = "\u001B[32m";
 
@@ -130,7 +158,21 @@ public class UserInterface {
     }
 
     public void lookHealth() {
-        System.out.println("Health: " + adventure.getPlayerHealth());
+        System.out.println(adventure.getPlayerHealth()+" Health");
+    }
+
+    public void consume(String shortName){
+        if(adventure.consume(shortName) == ConsumeResult.NOT_CONSUMABLE){
+            System.out.println("this item is not a consumable");
+        }
+        if(adventure.consume(shortName) == ConsumeResult.CONSUMED){
+            System.out.print("you ate the "+shortName+" you now have: ");
+            lookHealth();
+        }
+        if(adventure.consume(shortName) == ConsumeResult.NOT_FOUND){
+            System.out.println("you do not have the item and it is not in the room");
+        }
+
     }
 
 }

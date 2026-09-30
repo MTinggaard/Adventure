@@ -79,8 +79,4 @@ public class Room {
         }
         return null;
     }
-
-
-    public void ADDI() {
-    }
 }

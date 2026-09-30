@@ -77,8 +77,31 @@ public class Player {
         return null;
     }
 
-    public int getHealth(){
+    public int getHealth() {
         return health;
     }
 
+    public ConsumeResult consume(String shortName) {
+        if ((findItem(shortName)) == null && currentRoom.findItem(shortName) == null) {
+            return ConsumeResult.NOT_FOUND;
+        }
+        if (findItem(shortName) != null) {
+            Item foundItem = findItem(shortName);
+            if (foundItem instanceof Consumable) {
+                health += ((Consumable) foundItem).getHealthPoints();
+                removeItem(foundItem);
+                return ConsumeResult.CONSUMED;
+            }
+        } else if (currentRoom.findItem(shortName) != null) {
+            Item roomItem = currentRoom.findItem(shortName);
+            if (roomItem instanceof Consumable) {
+                health += ((Consumable) roomItem).getHealthPoints();
+                currentRoom.removeItem(roomItem);
+                return ConsumeResult.CONSUMED;
+            }
+        }
+        return null;
+    }
 }
+
+

@@ -55,6 +55,10 @@ public class Adventure {
     public int getPlayerHealth(){
         return player.getHealth();
     }
+    public ConsumeResult consume (String shortName){
+        return player.consume(shortName);
+    }
+
 
 }
 
