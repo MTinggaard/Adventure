@@ -8,7 +8,7 @@ public class Map {
 
     public void buildMap(){
         Room room1 = new Room("Classroom A379", "It's 8:30 early in the morning, sharp lights hits your eyes and jolts you awake. The room is full of emptiness, and something seems off.", new ArrayList<Item>());
-        room1.addItem(new Item("health potion", "a bright red health potion in a glass bottle"));
+        room1.addItem(new Liquid("health potion", "a bright red health potion in a glass bottle", 20));
         rooms.add(room1);
 
         Room room2 = new Room("3rd floor common area", "There are empty classrooms all around you, usually a space full of people. Where are all the people?", new ArrayList<Item>());
@@ -16,7 +16,7 @@ public class Map {
         rooms.add(room2);
 
         Room room3 = new Room("Classroom E212", "Something doesn't seem right, this door dont go to this classroom. The classroom is full of sleeping students, what is going on? I need to find some clues.", new ArrayList<Item>());
-        room3.addItem(new Item("beetroot","a white spotted beetroot"));
+        room3.addItem(new Food("beetroot","a white spotted beetroot" , -20));
         rooms.add(room3);
 
         Room room4 = new Room("Classroom A202","The small classroom is fully overgrown, you see birds flying around, almost like a jungle.", new ArrayList<Item>());
@@ -26,16 +26,18 @@ public class Map {
         rooms.add(room5);
 
         Room room6 = new Room("Codelab", "You enter codelab and finally see a familiar face. Its Tobias!", new ArrayList<Item>());
+        room6.addItem(new Liquid("Slurpjuice","a bottle filled with a bright glowing blue liquid",5));
         rooms.add(room6);
 
         Room room7 = new Room("Classroom A009", "A blacksmith you think to yourself, this used to ba a 3D lab. When you enter the room a strong scent of smoke fills the area and a blasting heat makes you sweat.", new ArrayList<Item>());
         rooms.add(room7);
 
         Room room8 = new Room("Cafeteria", "An empty room but finally something you recognise as normal. The smell of food makes your belly growl but something seems off", new ArrayList<Item>());
-        room8.addItem(new Item("golden apple","a gold shining apple that lights up the room"));
+        room8.addItem(new Food("golden apple","a gold shining apple that lights up the room", 100));
         rooms.add(room8);
 
         Room room9 = new Room("Bicycle cellar", "you open the door to an almost pitch black cave. This is not the bike cellar i remember, you think while gathering the courage to go further in", new ArrayList<Item>());
+        room9.addItem(new Item("Bicycle","a broken bicycle"));
         rooms.add(room9);
 
         //Room connections
