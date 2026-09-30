@@ -1,14 +1,10 @@
 package AdventureGame;
 
-public class Food extends Item {
-    private int healthPoints;
+public class Food extends Consumable {
 
     Food(String shortName, String longName, int healthPoints){
-        super(shortName, longName);
-        this.healthPoints = healthPoints;
+        super(shortName, longName , healthPoints);
     }
 
-    public int getHealthPoints() {
-        return healthPoints;
-    }
+
 }
