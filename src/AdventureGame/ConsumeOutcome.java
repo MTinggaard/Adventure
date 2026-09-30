@@ -23,4 +23,6 @@ public class ConsumeOutcome {
     public int getHealthChange() {
         return healthChange;
     }
+
+
 }

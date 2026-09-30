@@ -1,7 +1,5 @@
 package AdventureGame;
 
-import jdk.swing.interop.SwingInterOpUtils;
-
 import java.util.Scanner;
 
 public class UserInterface {
@@ -108,16 +106,16 @@ public class UserInterface {
             System.out.println("you are in perfect health");
         }
         if (playerHealth <= 99 && playerHealth >= 50) {
-            System.out.println("you are in good health");
+            System.out.println("you are in good health, but avoid fighting right now");
         }
         if (playerHealth <= 49 && playerHealth >= 25) {
-            System.out.println("you are not looking so good, find something to eat");
+            System.out.println("you are wounded - find something healthy to eat");
         }
         if (playerHealth <= 24 && playerHealth >= 1) {
-            System.out.println("you are struggling to breath");
+            System.out.println("you are barely alive");
         }
         if (playerHealth <= 0) {
-            System.out.println("you are dead");
+            System.out.println("you should be dead");
         }
     }
 

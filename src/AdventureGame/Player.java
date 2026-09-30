@@ -81,26 +81,32 @@ public class Player {
         return health;
     }
 
-    public ConsumeResult consume(String shortName) {
+    public ConsumeOutcome consume(String shortName) {
         if ((findItem(shortName)) == null && currentRoom.findItem(shortName) == null) {
-            return ConsumeResult.NOT_FOUND;
+            return new ConsumeOutcome(ConsumeResult.NOT_FOUND, null, 0);
         }
         if (findItem(shortName) != null) {
-            Item foundItem = findItem(shortName);
-            if (foundItem instanceof Consumable) {
-                health += ((Consumable) foundItem).getHealthPoints();
-                removeItem(foundItem);
-                return ConsumeResult.CONSUMED;
+            Item inventoryItem = findItem(shortName);
+            if (inventoryItem instanceof Consumable) {
+                health += ((Consumable) inventoryItem).getHealthPoints();
+                removeItem(inventoryItem);
+                return new ConsumeOutcome(ConsumeResult.CONSUMED, inventoryItem.getLongName(), ((Consumable) inventoryItem).getHealthPoints());
             }
         } else if (currentRoom.findItem(shortName) != null) {
             Item roomItem = currentRoom.findItem(shortName);
             if (roomItem instanceof Consumable) {
                 health += ((Consumable) roomItem).getHealthPoints();
                 currentRoom.removeItem(roomItem);
-                return ConsumeResult.CONSUMED;
+                return new ConsumeOutcome(ConsumeResult.CONSUMED, roomItem.getLongName(), ((Consumable) roomItem).getHealthPoints());
             }
         }
-        return null;
+        Item foundItem;
+        if (findItem(shortName) != null) {
+            foundItem = findItem(shortName);
+        } else {
+            foundItem = currentRoom.findItem(shortName);
+        }
+        return new ConsumeOutcome(ConsumeResult.NOT_CONSUMABLE, foundItem.getLongName(), 0);
     }
 }
 
