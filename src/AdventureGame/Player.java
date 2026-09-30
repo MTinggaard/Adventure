@@ -5,6 +5,7 @@ import java.util.ArrayList;
 public class Player {
     private Room currentRoom;
     private ArrayList<Item> inventory;
+    int health;
 
 
     public Room getCurrentRoom() {
@@ -74,6 +75,10 @@ public class Player {
             }
         }
         return null;
+    }
+
+    public int getHealth(){
+        return health;
     }
 
 }
