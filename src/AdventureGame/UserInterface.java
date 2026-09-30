@@ -16,6 +16,7 @@ public class UserInterface {
             Thread.sleep(1000);
 
             lookRoom();
+            lookRoomItems();
             healthStatus();
 
             System.out.print("Command -> ");
@@ -40,7 +41,7 @@ public class UserInterface {
             if (splitCommand.length > 1) {
                 if (adventure.takeItem(splitCommand[1]) == null) {
                     System.out.println("That item does not exist");
-                }
+                } else System.out.println("You took the " + splitCommand[1]);
             }
             return true;
         }
@@ -99,25 +100,27 @@ public class UserInterface {
             }
         }
     }
-    public void healthStatus(){
-        int playerHealth=adventure.getPlayerHealth();
-        System.out.print("Health: "+playerHealth+" ");
-        if( playerHealth >= 100) {
+
+    public void healthStatus() {
+        int playerHealth = adventure.getPlayerHealth();
+        System.out.print("Health: " + playerHealth + " ");
+        if (playerHealth >= 100) {
             System.out.println("you are in perfect health");
         }
-        if( playerHealth <= 99 &&  playerHealth >=50 ){
+        if (playerHealth <= 99 && playerHealth >= 50) {
             System.out.println("you are in good health");
         }
-        if( playerHealth <= 49 &&  playerHealth >=25 ){
+        if (playerHealth <= 49 && playerHealth >= 25) {
             System.out.println("you are not looking so good, find something to eat");
         }
-        if( playerHealth <= 24 &&  playerHealth >=1 ){
+        if (playerHealth <= 24 && playerHealth >= 1) {
             System.out.println("you are struggling to breath");
         }
-        if( playerHealth <=0 ){
+        if (playerHealth <= 0) {
             System.out.println("you are dead");
         }
     }
+
     public static final String ANSI_RESET = "\u001B[0m";
     public static final String ANSI_GREEN = "\u001B[32m";
 
@@ -126,7 +129,7 @@ public class UserInterface {
         System.out.println("Direction commands:");
         System.out.println(" - go north\n - go east\n - go south\n - go west");
         System.out.println("Item commands:");
-        System.out.println(" - take <item>\n - drop <item>\n - look inventory");
+        System.out.println(" - take <item>\n - drop <item>\n - look inventory\n - consume <consumable>");
         System.out.println("Misc:");
         System.out.println(" - look\n - help\n - exit");
         //System.out.print(ANSI_GREEN + "go north\ngo east\ngo south\ngo west\nlook\nexit\ntake <item>\ndrop <item>\nlook inventory" + ANSI_RESET + "\n");
@@ -140,6 +143,9 @@ public class UserInterface {
     public void lookRoom() {
         System.out.println("You are in " + adventure.getCurrentRoom().getName());
         System.out.println(adventure.getCurrentRoom().getDescription());
+    }
+
+    public void lookRoomItems() {
         if (!adventure.getCurrentRoom().getItems().isEmpty()) {
             System.out.println("Items in the room:");
             for (int i = 0; i < adventure.getCurrentRoom().getItems().size(); i++) {
@@ -158,21 +164,19 @@ public class UserInterface {
     }
 
     public void lookHealth() {
-        System.out.println(adventure.getPlayerHealth()+" Health");
+        System.out.println(adventure.getPlayerHealth() + " Health");
     }
 
-    public void consume(String shortName){
-        if(adventure.consume(shortName) == ConsumeResult.NOT_CONSUMABLE){
-            System.out.println("this item is not a consumable");
-        }
-        if(adventure.consume(shortName) == ConsumeResult.CONSUMED){
-            System.out.print("you ate the "+shortName+" you now have: ");
-            lookHealth();
-        }
-        if(adventure.consume(shortName) == ConsumeResult.NOT_FOUND){
-            System.out.println("you do not have the item and it is not in the room");
-        }
+    public void consume(String shortName) {
+        switch (adventure.consume(shortName)) {
+            case ConsumeResult.NOT_FOUND -> System.out.println("you do not have the item and it is not in the room");
 
+            case ConsumeResult.NOT_CONSUMABLE -> System.out.println("this item is not a consumable");
+
+            case ConsumeResult.CONSUMED -> {
+                System.out.print("you consumed the " + shortName + " you now have: ");
+                lookHealth();
+            }
+        }
     }
-
 }
