@@ -52,6 +52,10 @@ public class Adventure {
         return player.dropItem(shortName);
     }
 
+    public int getPlayerHealth(){
+        return player.getHealth();
+    }
+
 }
 
 

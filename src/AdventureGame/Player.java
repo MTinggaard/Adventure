@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class Player {
     private Room currentRoom;
     private ArrayList<Item> inventory;
-    int health ;
+    private int health = 100;
 
 
     public Room getCurrentRoom() {

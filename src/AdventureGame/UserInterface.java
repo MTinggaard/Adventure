@@ -78,6 +78,11 @@ public class UserInterface {
                 return true;
             }
 
+            case "health" -> {
+                lookHealth();
+                return true;
+            }
+
             default -> {
                 helpMessage();
                 return true;
@@ -122,6 +127,10 @@ public class UserInterface {
                 System.out.println(" - " + item.getLongName());
             }
         } else System.out.println("Your inventory is empty");
+    }
+
+    public void lookHealth() {
+        System.out.println("Health: " + adventure.getPlayerHealth());
     }
 
 }
