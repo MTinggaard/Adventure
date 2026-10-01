@@ -56,8 +56,8 @@ public class Adventure {
         return player.getHealth();
     }
 
-    public ConsumeResult consume (String shortName){
-        return player.consume(shortName).getResult();
+    public ConsumeOutcome consume (String shortName){
+        return player.consume(shortName);
     }
 
 

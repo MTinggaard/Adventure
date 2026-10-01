@@ -26,7 +26,7 @@ public class Map {
         rooms.add(room5);
 
         Room room6 = new Room("Codelab", "You enter codelab and finally see a familiar face. Its Tobias!", new ArrayList<Item>());
-        room6.addItem(new Liquid("slurpjuice","a bottle filled with a bright glowing blue liquid",5));
+        room6.addItem(new Liquid("bottle","a bottle filled with a bright glowing blue liquid",5));
         rooms.add(room6);
 
         Room room7 = new Room("Classroom A009", "A blacksmith you think to yourself, this used to ba a 3D lab. When you enter the room a strong scent of smoke fills the area and a blasting heat makes you sweat.", new ArrayList<Item>());

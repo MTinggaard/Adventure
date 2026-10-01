@@ -52,7 +52,7 @@ public class UserInterface {
             }
             return true;
         }
-        if (command.contains("consume")) {
+        if (command.contains("consume") || command.contains("eat") || command.contains("drink")) {
             String[] splitCommand = command.split(" ");
             if (splitCommand.length > 1) {
                 consume(splitCommand[1]);
@@ -119,18 +119,14 @@ public class UserInterface {
         }
     }
 
-    public static final String ANSI_RESET = "\u001B[0m";
-    public static final String ANSI_GREEN = "\u001B[32m";
-
     private void help() {
         System.out.println("Below is a list of useable commands:");
         System.out.println("Direction commands:");
         System.out.println(" - go north\n - go east\n - go south\n - go west");
         System.out.println("Item commands:");
-        System.out.println(" - take <item>\n - drop <item>\n - look inventory\n - consume <consumable>");
+        System.out.println(" - take <item>\n - drop <item>\n - look inventory\n - consume <consumable>\n - eat <consumable>\n - drink <consumable>");
         System.out.println("Misc:");
-        System.out.println(" - look\n - help\n - exit");
-        //System.out.print(ANSI_GREEN + "go north\ngo east\ngo south\ngo west\nlook\nexit\ntake <item>\ndrop <item>\nlook inventory" + ANSI_RESET + "\n");
+        System.out.println(" - look\n - health\n - help\n - look inventory\n - exit");
         position.mapPosition();
     }
 
@@ -162,18 +158,23 @@ public class UserInterface {
     }
 
     public void lookHealth() {
-        System.out.println(adventure.getPlayerHealth() + " Health");
+        //System.out.println(adventure.getPlayerHealth() + " Health");
+        healthStatus();
     }
 
     public void consume(String shortName) {
-        switch (adventure.consume(shortName)) {
-            case ConsumeResult.NOT_FOUND -> System.out.println("you do not have the item and it is not in the room");
+        ConsumeOutcome outcome = adventure.consume(shortName);
+        switch (outcome.getResult()) {
+            case ConsumeResult.NOT_FOUND -> {
+                System.out.println("Couldn't find " + shortName);
+            }
 
-            case ConsumeResult.NOT_CONSUMABLE -> System.out.println("this item is not a consumable");
+            case ConsumeResult.NOT_CONSUMABLE -> {
+                System.out.println(outcome.getItemName() + " is not consumable");
+            }
 
             case ConsumeResult.CONSUMED -> {
-                System.out.print("you consumed the " + shortName + " you now have: ");
-                lookHealth();
+                System.out.print("you consumed " + outcome.getItemName() + " you " + (outcome.getHealthChange() > 0 ? "gained " : "lost ") + Math.abs(outcome.getHealthChange())+ " hp\n");
             }
         }
     }
