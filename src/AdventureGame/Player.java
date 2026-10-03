@@ -6,7 +6,11 @@ public class Player {
     private Room currentRoom;
     private ArrayList<Item> inventory;
     private int health = 100;
+    private Weapon equipped;
 
+    public void setEquipped(Weapon equipped) {
+        this.equipped = equipped;
+    }
 
     public Room getCurrentRoom() {
         return currentRoom;
@@ -40,7 +44,6 @@ public class Player {
             return false;
         }
     }
-
 
     public void addItem(Item item) {
         inventory.add(item);
@@ -108,6 +111,21 @@ public class Player {
         }
         return new ConsumeOutcome(ConsumeResult.NOT_CONSUMABLE, foundItem.getLongName(), 0);
     }
+
+    public void equip(String name) {
+        for (Item weapon : inventory) {
+            if (weapon.getShortName().equals(name)) {
+                setEquipped((Weapon) weapon);
+            }
+        }
+    }
+
+    public void attack() {
+        if (equipped != null) {
+
+        }
+    }
+
 }
 
 

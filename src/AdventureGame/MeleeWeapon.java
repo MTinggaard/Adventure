@@ -1,6 +1,10 @@
 package AdventureGame;
 
 public class MeleeWeapon extends Weapon{
+    MeleeWeapon(String shortName, String longName) {
+        super(shortName, longName);
+    }
+
     @Override
     public boolean canUse() {
         return false;

@@ -59,6 +59,12 @@ public class UserInterface {
             }
             return true;
         }
+        if(command.contains("equip")){
+            String[] splitCommand = command.split(" ");
+            if(splitCommand.length > 1){
+                adventure.equip(splitCommand[1]);
+            }
+        }
 
         switch (command) {
             case "go north", "w", "up" -> {
@@ -177,5 +183,9 @@ public class UserInterface {
                 System.out.print("you consumed " + outcome.getItemName() + " you " + (outcome.getHealthChange() > 0 ? "gained " : "lost ") + Math.abs(outcome.getHealthChange())+ " hp\n");
             }
         }
+    }
+
+    public void equip(){
+
     }
 }

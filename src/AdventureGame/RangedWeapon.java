@@ -4,9 +4,11 @@ public class RangedWeapon extends Weapon{
 
     private int ammunition;
 
-    public RangedWeapon(int ammunition) {
+    RangedWeapon(String shortName, String longName, int ammunition) {
+        super(shortName, longName);
         this.ammunition = ammunition;
     }
+
 
     @Override
     public boolean canUse() {

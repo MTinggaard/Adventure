@@ -60,6 +60,9 @@ public class Adventure {
         return player.consume(shortName);
     }
 
+    public void equip(String shortName){
+        player.equip(shortName);
+    }
 
 }
 
