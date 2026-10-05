@@ -65,6 +65,9 @@ public class Player {
     public Item dropItem(String shortName) {
         if (findItem(shortName) != null) {
             currentRoom.addItem(findItem(shortName));
+            if((findItem(shortName)) == equipped){
+                setEquipped(null);
+            }
             removeItem(findItem(shortName));
             return currentRoom.findItem(shortName);
         }
@@ -115,7 +118,9 @@ public class Player {
     public void equip(String name) {
         for (Item weapon : inventory) {
             if (weapon.getShortName().equals(name)) {
+                if (weapon instanceof Weapon){
                 setEquipped((Weapon) weapon);
+                }
             }
         }
     }
@@ -125,12 +130,12 @@ public class Player {
     }
 
     public AttackOutcome attack() {
-        if (equipped.canUse()) {
-            return new AttackOutcome(AttackResult.ATTACKED, equipped);
+        if (equipped == null) {
+            return new AttackOutcome(AttackResult.NOT_EQUIPPED, null);
         } else if (!equipped.canUse()) {
             return new AttackOutcome(AttackResult.NO_AMMUNITION, equipped);
         }
-        return new AttackOutcome(AttackResult.NOT_EQUIPPED, null);
+        return new AttackOutcome(AttackResult.ATTACKED, equipped);
     }
 
 }

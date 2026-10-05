@@ -10,12 +10,12 @@ public class UserInterface {
     public void startProgram() throws InterruptedException {
         adventure.startGame();
 
-        lookRoom();
-        lookRoomItems();
-        healthStatus();
 
         while (true) {
             Thread.sleep(1000);
+            lookRoom();
+            lookRoomItems();
+            healthStatus();
 
             System.out.print("Command -> ");
 
@@ -100,7 +100,7 @@ public class UserInterface {
                 return true;
             }
 
-            case "look inventory" -> {
+            case "look inventory", "inventory" -> {
                 lookInventory();
                 return true;
             }
@@ -216,6 +216,7 @@ public class UserInterface {
                 System.out.println("No ammunition left.");
             }
             case AttackResult.ATTACKED -> {
+                attackOutcome.getWeapon().use();
                 System.out.println("You " + attackOutcome.getWeapon().getAttackVerb() + " " + attackOutcome.getWeapon().getLongName());
                 System.out.println("You have " + attackOutcome.getWeapon().getUsesLeftText());
             }
