@@ -1,32 +1,31 @@
 package AdventureGame;
 
-public class RangedWeapon extends Weapon{
+public class RangedWeapon extends Weapon {
 
     private int ammunition;
 
-    RangedWeapon(String shortName, String longName, int ammunition) {
-        super(shortName, longName);
+    RangedWeapon(String shortName, String longName, int damage, int ammunition) {
+        super(shortName, longName, damage);
         this.ammunition = ammunition;
     }
 
-
     @Override
     public boolean canUse() {
-        return false;
+        return ammunition > 0;
     }
 
     @Override
     public void use() {
-
+        ammunition--;
     }
 
     @Override
     public String getAttackVerb() {
-        return "";
+        return "fire";
     }
 
     @Override
     public String getUsesLeftText() {
-        return "";
+        return ammunition + " shots left.";
     }
 }

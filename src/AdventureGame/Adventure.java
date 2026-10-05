@@ -64,6 +64,14 @@ public class Adventure {
         player.equip(shortName);
     }
 
+    public Weapon getEquipped(){
+        return player.getEquipped();
+    }
+
+    public AttackOutcome attack(){
+        return player.attack();
+    }
+
 }
 
 

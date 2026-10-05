@@ -120,10 +120,17 @@ public class Player {
         }
     }
 
-    public void attack() {
-        if (equipped != null) {
+    public Weapon getEquipped() {
+        return equipped;
+    }
 
+    public AttackOutcome attack() {
+        if (equipped.canUse()) {
+            return new AttackOutcome(AttackResult.ATTACKED, equipped);
+        } else if (!equipped.canUse()) {
+            return new AttackOutcome(AttackResult.NO_AMMUNITION, equipped);
         }
+        return new AttackOutcome(AttackResult.NOT_EQUIPPED, null);
     }
 
 }

@@ -10,12 +10,12 @@ public class UserInterface {
     public void startProgram() throws InterruptedException {
         adventure.startGame();
 
+        lookRoom();
+        lookRoomItems();
+        healthStatus();
+
         while (true) {
             Thread.sleep(1000);
-
-            lookRoom();
-            lookRoomItems();
-            healthStatus();
 
             System.out.print("Command -> ");
 
@@ -59,12 +59,24 @@ public class UserInterface {
             }
             return true;
         }
-        if(command.contains("equip")){
+        if (command.contains("equip")) {
             String[] splitCommand = command.split(" ");
-            if(splitCommand.length > 1){
+            if (splitCommand.length > 1) {
                 adventure.equip(splitCommand[1]);
+                if (adventure.getEquipped() != null) {
+                    System.out.println("You equipped: " + adventure.getEquipped().getLongName());
+                }
             }
+            return true;
         }
+        if (command.contains("attack")) {
+            attack();
+//            String[] splitCommand = command.split(" ");
+//            if (splitCommand.length > 1) {
+//            }
+            return true;
+        }
+
 
         switch (command) {
             case "go north", "w", "up" -> {
@@ -156,15 +168,23 @@ public class UserInterface {
 
     public void lookInventory() {
         if (!adventure.getInventory().isEmpty()) {
-            System.out.println("You are carrying:");
+            System.out.print("You are carrying: ");
             for (Item item : adventure.getInventory()) {
-                System.out.println(" - " + item.getLongName());
+                if (adventure.getInventory().getLast().equals(item)) {
+                    System.out.print(item.getLongName());
+                } else {
+                    System.out.print(item.getLongName() + ", ");
+                }
             }
+            System.out.println();
+            if (adventure.getEquipped() != null) {
+                System.out.println("Equipped: " + adventure.getEquipped().getLongName());
+            }
+
         } else System.out.println("Your inventory is empty");
     }
 
     public void lookHealth() {
-        //System.out.println(adventure.getPlayerHealth() + " Health");
         healthStatus();
     }
 
@@ -180,12 +200,27 @@ public class UserInterface {
             }
 
             case ConsumeResult.CONSUMED -> {
-                System.out.print("you consumed " + outcome.getItemName() + " you " + (outcome.getHealthChange() > 0 ? "gained " : "lost ") + Math.abs(outcome.getHealthChange())+ " hp\n");
+                System.out.print("you consumed " + outcome.getItemName() + " you " + (outcome.getHealthChange() > 0 ? "gained " : "lost ") + Math.abs(outcome.getHealthChange()) + " hp\n");
             }
         }
     }
 
-    public void equip(){
+    public void attack() {
+        AttackOutcome attackOutcome = adventure.attack();
 
+        switch (attackOutcome.getResult()) {
+            case AttackResult.NOT_EQUIPPED -> {
+                System.out.println("No weapon equipped.");
+            }
+            case AttackResult.NO_AMMUNITION -> {
+                System.out.println("No ammunition left.");
+            }
+            case AttackResult.ATTACKED -> {
+                System.out.println("You " + attackOutcome.getWeapon().getAttackVerb() + " " + attackOutcome.getWeapon().getLongName());
+                System.out.println("You have " + attackOutcome.getWeapon().getUsesLeftText());
+            }
+
+        }
     }
+
 }

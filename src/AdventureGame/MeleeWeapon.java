@@ -1,13 +1,13 @@
 package AdventureGame;
 
-public class MeleeWeapon extends Weapon{
-    MeleeWeapon(String shortName, String longName) {
-        super(shortName, longName);
+public class MeleeWeapon extends Weapon {
+    MeleeWeapon(String shortName, String longName, int damage) {
+        super(shortName, longName, damage);
     }
 
     @Override
     public boolean canUse() {
-        return false;
+        return true;
     }
 
     @Override
@@ -17,11 +17,11 @@ public class MeleeWeapon extends Weapon{
 
     @Override
     public String getAttackVerb() {
-        return "";
+        return "swing";
     }
 
     @Override
     public String getUsesLeftText() {
-        return "";
+        return "infinite uses left";
     }
 }

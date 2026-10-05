@@ -1,10 +1,11 @@
 package AdventureGame;
 
-public abstract class Weapon extends Item{
+public abstract class Weapon extends Item {
     private int damage;
 
-    Weapon(String shortName, String longName) {
+    Weapon(String shortName, String longName, int damage) {
         super(shortName, longName);
+        this.damage = damage;
     }
 
     public int getDamage() {

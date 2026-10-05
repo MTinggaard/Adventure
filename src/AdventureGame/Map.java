@@ -21,7 +21,7 @@ public class Map {
 
         Room room4 = new Room("Classroom A202","The small classroom is fully overgrown, you see birds flying around, almost like a jungle.", new ArrayList<Item>());
         rooms.add(room4);
-        room4.addItem(new MeleeWeapon("knife", "a rusty old knife"));
+        room4.addItem(new MeleeWeapon("knife", "a rusty old knife", 10));
 
         Room room5 = new Room("Conference room", "As you enter the conference room, you see giant pillars made of marble aswell as a throne made of bones. A chill runs down your spine, do you hear boss music?", new ArrayList<Item>());
         rooms.add(room5);
@@ -32,7 +32,7 @@ public class Map {
 
         Room room7 = new Room("Classroom A009", "A blacksmith you think to yourself, this used to ba a 3D lab. When you enter the room a strong scent of smoke fills the area and a blasting heat makes you sweat.", new ArrayList<Item>());
         rooms.add(room7);
-        room7.addItem(new RangedWeapon("revolver", "a shiny brass lamp, a rusty sword, an old revolver", 6));
+        room7.addItem(new RangedWeapon("revolver", "an old revolver",30 ,6));
 
         Room room8 = new Room("Cafeteria", "An empty room but finally something you recognise as normal. The smell of food makes your belly growl but something seems off", new ArrayList<Item>());
         room8.addItem(new Food("apple","a gold shining apple that lights up the room", 100));
