@@ -146,8 +146,10 @@ public class Player {
         } else if (!equipped.canUse()) {
             return new AttackOutcome(AttackResult.NO_AMMUNITION, equipped);
         }
+        equipped.use();
         return new AttackOutcome(AttackResult.ATTACKED, equipped);
     }
+
 
 }
 

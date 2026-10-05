@@ -175,6 +175,7 @@ public class UserInterface {
             }
             System.out.println();
             if (adventure.getEquipped() != null) {
+                System.out.println("Equipped: " + adventure.getEquipped().getLongName());
             }
 
         } else System.out.println("Your inventory is empty");
@@ -228,12 +229,10 @@ public class UserInterface {
                 System.out.println("No ammunition left.");
             }
             case AttackResult.ATTACKED -> {
-                attackOutcome.getWeapon().use();
                 System.out.println("You " + attackOutcome.getWeapon().getAttackVerb() + " " + attackOutcome.getWeapon().getLongName());
                 System.out.println("You have " + attackOutcome.getWeapon().getUsesLeftText());
             }
 
         }
     }
-
 }
