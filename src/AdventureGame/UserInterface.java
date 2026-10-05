@@ -62,10 +62,7 @@ public class UserInterface {
         if (command.contains("equip")) {
             String[] splitCommand = command.split(" ");
             if (splitCommand.length > 1) {
-                adventure.equip(splitCommand[1]);
-                if (adventure.getEquipped() != null) {
-                    System.out.println("You equipped: " + adventure.getEquipped().getLongName());
-                }
+                equip(splitCommand[1]);
             }
             return true;
         }
@@ -178,7 +175,6 @@ public class UserInterface {
             }
             System.out.println();
             if (adventure.getEquipped() != null) {
-                System.out.println("Equipped: " + adventure.getEquipped().getLongName());
             }
 
         } else System.out.println("Your inventory is empty");
@@ -201,6 +197,22 @@ public class UserInterface {
 
             case ConsumeResult.CONSUMED -> {
                 System.out.print("you consumed " + outcome.getItemName() + " you " + (outcome.getHealthChange() > 0 ? "gained " : "lost ") + Math.abs(outcome.getHealthChange()) + " hp\n");
+            }
+        }
+    }
+
+    public void equip(String shortName){
+        EquipOutcome equipOutcome = adventure.equip(shortName);
+
+        switch (equipOutcome.getResult()){
+            case EquipResult.NOT_FOUND -> {
+                System.out.println(shortName + " not found");
+            }
+            case EquipResult.NOT_WEAPON -> {
+                System.out.println("cannot equip that item");
+            }
+            case EquipResult.EQUIPPED -> {
+                System.out.println("Equipped: " + adventure.getEquipped().getLongName());
             }
         }
     }

@@ -60,8 +60,8 @@ public class Adventure {
         return player.consume(shortName);
     }
 
-    public void equip(String shortName){
-        player.equip(shortName);
+    public EquipOutcome equip(String shortName){
+        return player.equip(shortName);
     }
 
     public Weapon getEquipped(){
