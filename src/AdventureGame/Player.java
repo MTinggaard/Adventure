@@ -151,7 +151,7 @@ public class Player {
     }
 
     public void hit(int damage){
-
+        health -= damage;
     }
 
 

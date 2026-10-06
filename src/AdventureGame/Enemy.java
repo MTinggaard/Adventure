@@ -17,11 +17,12 @@ public class Enemy {
         this.room = room;
     }
 
-    public void attack(Player player){
-
+    public AttackOutcome attack(Player player){
+        return new AttackOutcome(AttackResult.ATTACKED, weapon);
     }
 
     public void hit(int damage){
+        health -= damage;
     }
 
     public String getShortName() {

@@ -152,6 +152,7 @@ public class UserInterface {
     public void lookRoom() {
         System.out.println("You are in " + adventure.getCurrentRoom().getName());
         System.out.println(adventure.getCurrentRoom().getDescription());
+        lookEnemies();
     }
 
     public void lookRoomItems() {
@@ -160,7 +161,7 @@ public class UserInterface {
             for (int i = 0; i < adventure.getCurrentRoom().getItems().size(); i++) {
                 System.out.println(" - " + adventure.getCurrentRoom().getItems().get(i).getLongName());
             }
-        } else System.out.println("The room is empty");
+        } else System.out.println("There are no items in the room");
     }
 
     public void lookInventory() {
@@ -202,10 +203,10 @@ public class UserInterface {
         }
     }
 
-    public void equip(String shortName){
+    public void equip(String shortName) {
         EquipOutcome equipOutcome = adventure.equip(shortName);
 
-        switch (equipOutcome.getResult()){
+        switch (equipOutcome.getResult()) {
             case EquipResult.NOT_FOUND -> {
                 System.out.println(shortName + " not found");
             }
@@ -234,5 +235,15 @@ public class UserInterface {
             }
 
         }
+    }
+
+    public void lookEnemies() {
+        if (!adventure.getCurrentRoom().getEnemies().isEmpty()) {
+            System.out.println("Enemies in the room:");
+            for (Enemy enemy : adventure.getCurrentRoom().getEnemies()) {
+                System.out.println(enemy.getLongName());
+                System.out.println(enemy.getDescription());
+            }
+        } else System.out.println("There are no enemies in this room.");
     }
 }

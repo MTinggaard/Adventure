@@ -14,10 +14,11 @@ public class Room {
     private ArrayList<Item> items;
     private ArrayList<Enemy> enemies;
 
-    Room(String name, String description, ArrayList<Item> items) {
+    Room(String name, String description, ArrayList<Item> items, ArrayList<Enemy> enemies) {
         this.name = name;
         this.description = description;
         this.items = items;
+        this.enemies = enemies;
     }
 
     public String getName() {
