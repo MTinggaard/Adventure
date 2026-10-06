@@ -11,7 +11,7 @@ public class UserInterface {
         adventure.startGame();
 
 
-        while (true) {
+        while (!adventure.getPlayer().isDead()) {
             Thread.sleep(1000);
             lookRoom();
             lookRoomItems();
@@ -30,7 +30,9 @@ public class UserInterface {
                 Thread.sleep(1000);
             }
         }
-        System.out.println("Goodbye!");
+        if (adventure.getPlayer().isDead()) {
+            System.out.println("You've died. Thank you for playing");
+        } else System.out.println("Goodbye!");
     }
 
     public boolean parseInput(String command) {
@@ -67,10 +69,10 @@ public class UserInterface {
             return true;
         }
         if (command.contains("attack")) {
-            attack();
-//            String[] splitCommand = command.split(" ");
-//            if (splitCommand.length > 1) {
-//            }
+            String[] splitCommand = command.split(" ");
+            if (splitCommand.length > 1) {
+                attack(splitCommand[1]);
+            }
             return true;
         }
 
@@ -128,9 +130,6 @@ public class UserInterface {
         }
         if (playerHealth <= 24 && playerHealth >= 1) {
             System.out.println("you are barely alive");
-        }
-        if (playerHealth <= 0) {
-            System.out.println("you should be dead");
         }
     }
 
@@ -219,7 +218,7 @@ public class UserInterface {
         }
     }
 
-    public void attack() {
+    public void attack(String shortName) {
         AttackOutcome attackOutcome = adventure.attack();
 
         switch (attackOutcome.getResult()) {
@@ -230,10 +229,23 @@ public class UserInterface {
                 System.out.println("No ammunition left.");
             }
             case AttackResult.ATTACKED -> {
-                System.out.println("You " + attackOutcome.getWeapon().getAttackVerb() + " " + attackOutcome.getWeapon().getLongName());
-                System.out.println("You have " + attackOutcome.getWeapon().getUsesLeftText());
-            }
+                Enemy enemy = adventure.getCurrentRoom().findEnemy(shortName);
 
+                if (enemy != null) {
+                    enemy.hit(attackOutcome.getWeapon().getDamage());
+                    System.out.println("You " + attackOutcome.getWeapon().getAttackVerb() + " " + attackOutcome.getWeapon().getLongName());
+                    System.out.println("You have " + attackOutcome.getWeapon().getUsesLeftText());
+                    if (!enemy.isDead()) {
+                        System.out.println(enemy.getShortName() + " got hit current health is now: " + enemy.getHealth());
+                        enemy.attack(adventure.getPlayer());
+                        System.out.println(enemy.getShortName() + " attacked you");
+                        lookHealth();
+                    } else if (enemy.isDead()) {
+                        System.out.println("You killed " + enemy.getShortName());
+                        System.out.println(enemy.getShortName() + " dropped " + adventure.getCurrentRoom().findItem(enemy.getWeapon().getShortName()));
+                    }
+                } else System.out.println("Did not find that enemy");
+            }
         }
     }
 
@@ -246,4 +258,5 @@ public class UserInterface {
             }
         } else System.out.println("There are no enemies in this room.");
     }
+
 }

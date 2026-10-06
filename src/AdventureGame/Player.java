@@ -154,6 +154,13 @@ public class Player {
         health -= damage;
     }
 
+    public boolean isDead(){
+        if(health <= 0){
+            return true;
+        }
+        return false;
+    }
+
 
 }
 

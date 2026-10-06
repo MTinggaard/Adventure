@@ -21,11 +21,11 @@ public class Map {
 
         Room room4 = new Room("Classroom A202","The small classroom is fully overgrown, you see birds flying around, almost like a jungle.", new ArrayList<Item>(), new ArrayList<Enemy>());
         rooms.add(room4);
-        room4.addItem(new MeleeWeapon("knife", "a rusty old knife", 10));
+        room4.addItem(new MeleeWeapon("knife", "a rusty old knife", 25));
 
         Room room5 = new Room("Conference room", "As you enter the conference room, you see giant pillars made of marble aswell as a throne made of bones. A chill runs down your spine, do you hear boss music?", new ArrayList<Item>(), new ArrayList<Enemy>());
         rooms.add(room5);
-        room5.addEnemy(new Enemy("David", "an old teacher named David", "Stats:\nHealth: 200\nWeapon: two-handed battleaxe\nDamage: 25 per hit", 200, new MeleeWeapon("axe", "two-handed battleaxe", 25), room5));
+        room5.addEnemy(new Enemy("david", "an old teacher named David", "Stats:\nHealth: 200\nWeapon: two-handed battleaxe\nDamage: 25 per hit", 200, new MeleeWeapon("axe", "two-handed battleaxe", 25), room5));
 
         Room room6 = new Room("Codelab", "You enter codelab and finally see a familiar face. Its Tobias!", new ArrayList<Item>(), new ArrayList<Enemy>());
         room6.addItem(new Liquid("bottle","a bottle filled with a bright glowing blue liquid",5));
@@ -33,7 +33,7 @@ public class Map {
 
         Room room7 = new Room("Classroom A009", "A blacksmith you think to yourself, this used to ba a 3D lab. When you enter the room a strong scent of smoke fills the area and a blasting heat makes you sweat.", new ArrayList<Item>(), new ArrayList<Enemy>());
         rooms.add(room7);
-        room7.addItem(new RangedWeapon("revolver", "an old revolver",30 ,6));
+        room7.addItem(new RangedWeapon("revolver", "an old revolver",40 ,6));
 
         Room room8 = new Room("Cafeteria", "An empty room but finally something you recognise as normal. The smell of food makes your belly growl but something seems off", new ArrayList<Item>(), new ArrayList<Enemy>());
         room8.addItem(new Food("apple","a gold shining apple that lights up the room", 100));

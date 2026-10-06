@@ -17,8 +17,17 @@ public class Enemy {
         this.room = room;
     }
 
-    public AttackOutcome attack(Player player){
-        return new AttackOutcome(AttackResult.ATTACKED, weapon);
+    public void attack(Player player){
+        player.hit(weapon.getDamage());
+    }
+
+    public boolean isDead(){
+        if(health <= 0){
+          dropItem();
+          room.removeEnemy(this);
+          return true;
+        }
+        return false;
     }
 
     public void hit(int damage){
@@ -39,5 +48,18 @@ public class Enemy {
 
     public int getHealth() {
         return health;
+    }
+
+    public void dropItem(){
+        room.addItem(weapon);
+        setWeapon(null);
+    }
+
+    public void setWeapon(Weapon weapon) {
+        this.weapon = weapon;
+    }
+
+    public Weapon getWeapon() {
+        return weapon;
     }
 }
