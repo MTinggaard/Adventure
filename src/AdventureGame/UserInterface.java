@@ -241,6 +241,8 @@ public class UserInterface {
                         System.out.println(enemy.getShortName() + " attacked you");
                         lookHealth();
                     } else if (enemy.isDead()) {
+                        enemy.dropItem();
+                        adventure.getCurrentRoom().removeEnemy(enemy);
                         System.out.println("You killed " + enemy.getShortName());
                         System.out.println(enemy.getShortName() + " dropped " + adventure.getCurrentRoom().findItem(enemy.getWeapon().getShortName()));
                     }

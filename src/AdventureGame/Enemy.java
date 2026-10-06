@@ -22,12 +22,7 @@ public class Enemy {
     }
 
     public boolean isDead(){
-        if(health <= 0){
-          dropItem();
-          room.removeEnemy(this);
-          return true;
-        }
-        return false;
+         return health <= 0;
     }
 
     public void hit(int damage){
