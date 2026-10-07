@@ -73,8 +73,7 @@ public class UserInterface {
 
             if (splitCommand.length > 1) {
                 attack(splitCommand[1]);
-            }
-            else {
+            } else {
                 attack();
             }
             return true;
@@ -223,7 +222,10 @@ public class UserInterface {
     }
 
     public void attack(String shortName) {
-        AttackOutcome attackOutcome = adventure.attack();
+        AttackOutcome attackOutcome;
+        if (adventure.getCurrentRoom().findEnemy(shortName) != null) {
+            attackOutcome = adventure.attack();
+        } else attackOutcome = new AttackOutcome(AttackResult.NOT_FOUND, null);
 
         switch (attackOutcome.getResult()) {
             case AttackResult.NOT_EQUIPPED -> {
@@ -236,24 +238,28 @@ public class UserInterface {
                 Enemy enemy = adventure.getCurrentRoom().findEnemy(shortName);
 
                 if (enemy != null) {
+                    String enemyWeaponShortname = enemy.getWeapon().getShortName();
                     enemy.hit(attackOutcome.getWeapon().getDamage());
                     System.out.println("You " + attackOutcome.getWeapon().getAttackVerb() + " " + attackOutcome.getWeapon().getLongName());
                     System.out.println("You have " + attackOutcome.getWeapon().getUsesLeftText());
                     if (!enemy.isDead()) {
                         System.out.println(enemy.getShortName() + " got hit current health is now: " + enemy.getHealth());
                         enemy.attack(adventure.getPlayer());
+                        enemy.getWeapon().use();
                         System.out.println(enemy.getShortName() + " attacked you");
                         lookHealth();
                     } else if (enemy.isDead()) {
-                        enemy.dropItem();
                         adventure.getCurrentRoom().removeEnemy(enemy);
+                        enemy.dropItem();
                         System.out.println("You killed " + enemy.getShortName());
-                        System.out.println(enemy.getShortName() + " dropped " + adventure.getCurrentRoom().findItem(enemy.getWeapon().getShortName()));
+                        System.out.println(enemy.getShortName() + " dropped " + enemyWeaponShortname);
                     }
-                } else System.out.println("Did not find that enemy");
+                }
             }
+            case AttackResult.NOT_FOUND -> System.out.println("Did not find that enemy");
         }
     }
+
     public void attack() {
         AttackOutcome attackOutcome = adventure.attack();
 
@@ -266,30 +272,31 @@ public class UserInterface {
             }
             case AttackResult.ATTACKED -> {
                 Enemy enemy;
-                if(!adventure.getCurrentRoom().getEnemies().isEmpty()) {
+                if (!adventure.getCurrentRoom().getEnemies().isEmpty()) {
                     enemy = adventure.getCurrentRoom().getEnemies().getFirst();
-                }
-                else {
-                   enemy = null;
+                } else {
+                    enemy = null;
                 }
 
                 if (enemy != null) {
+                    String enemyWeaponShortname = enemy.getWeapon().getShortName();
                     enemy.hit(attackOutcome.getWeapon().getDamage());
                     System.out.println("You " + attackOutcome.getWeapon().getAttackVerb() + " " + attackOutcome.getWeapon().getLongName());
                     System.out.println("You have " + attackOutcome.getWeapon().getUsesLeftText());
                     if (!enemy.isDead()) {
                         System.out.println(enemy.getShortName() + " got hit current health is now: " + enemy.getHealth());
                         enemy.attack(adventure.getPlayer());
+                        enemy.getWeapon().use();
                         System.out.println(enemy.getShortName() + " attacked you");
                         lookHealth();
                     } else if (enemy.isDead()) {
-                        enemy.dropItem();
                         adventure.getCurrentRoom().removeEnemy(enemy);
+                        enemy.dropItem();
                         System.out.println("You killed " + enemy.getShortName());
-                        System.out.println(enemy.getShortName() + " dropped " + adventure.getCurrentRoom().findItem(enemy.getWeapon().getShortName()));
+                        System.out.println(enemy.getShortName() + " dropped " + enemyWeaponShortname);
                     }
                 } else {
-                    System.out.println("Did not find that enemy");
+                    System.out.println("You " + adventure.getPlayer().getEquipped().getAttackVerb() + " into nothing");
                 }
             }
         }

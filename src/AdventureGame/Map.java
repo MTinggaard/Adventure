@@ -21,7 +21,7 @@ public class Map {
 
         Room room4 = new Room("Classroom A202","The small classroom is fully overgrown, you see birds flying around, almost like a jungle.", new ArrayList<Item>(), new ArrayList<Enemy>());
         rooms.add(room4);
-        room4.addItem(new MeleeWeapon("knife", "a rusty old knife", 25));
+        room4.addItem(new MeleeWeapon("knife", "a rusty old knife", 100));
 
         Room room5 = new Room("Conference room", "As you enter the conference room, you see giant pillars made of marble aswell as a throne made of bones. A chill runs down your spine, do you hear boss music?", new ArrayList<Item>(), new ArrayList<Enemy>());
         rooms.add(room5);
