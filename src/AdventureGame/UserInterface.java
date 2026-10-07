@@ -244,8 +244,12 @@ public class UserInterface {
                     System.out.println("You have " + attackOutcome.getWeapon().getUsesLeftText());
                     if (!enemy.isDead()) {
                         System.out.println(enemy.getShortName() + " got hit current health is now: " + enemy.getHealth());
-                        enemy.attack(adventure.getPlayer());
-                        enemy.getWeapon().use();
+                        if (enemy.getWeapon().canUse()) {
+                            enemy.attack(adventure.getPlayer());
+                            enemy.getWeapon().use();
+                        } else {
+                            System.out.println("enemy tried to attack but does not have anymore ammunition");
+                        }
                         System.out.println(enemy.getShortName() + " attacked you");
                         lookHealth();
                     } else if (enemy.isDead()) {
@@ -285,8 +289,12 @@ public class UserInterface {
                     System.out.println("You have " + attackOutcome.getWeapon().getUsesLeftText());
                     if (!enemy.isDead()) {
                         System.out.println(enemy.getShortName() + " got hit current health is now: " + enemy.getHealth());
-                        enemy.attack(adventure.getPlayer());
-                        enemy.getWeapon().use();
+                        if (enemy.getWeapon().canUse()) {
+                            enemy.attack(adventure.getPlayer());
+                            enemy.getWeapon().use();
+                        } else {
+                            System.out.println("enemy tried to attack but does not have anymore ammunition");
+                        }
                         System.out.println(enemy.getShortName() + " attacked you");
                         lookHealth();
                     } else if (enemy.isDead()) {
