@@ -150,6 +150,7 @@ public class Player {
         return new AttackOutcome(AttackResult.ATTACKED, equipped);
     }
 
+
     public void hit(int damage){
         health -= damage;
     }

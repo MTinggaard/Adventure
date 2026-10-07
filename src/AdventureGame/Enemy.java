@@ -18,7 +18,9 @@ public class Enemy {
     }
 
     public void attack(Player player){
-        player.hit(weapon.getDamage());
+        if (weapon.canUse()){
+            player.hit(weapon.getDamage());
+        }
     }
 
     public boolean isDead(){
