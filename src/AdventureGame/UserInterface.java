@@ -13,9 +13,7 @@ public class UserInterface {
 
         while (!adventure.getPlayer().isDead()) {
             Thread.sleep(1000);
-            lookRoom();
-            lookRoomItems();
-            healthStatus();
+            allinfo(adventure.getPlayer().getLastRoom());
 
             System.out.print("Command -> ");
 
@@ -253,9 +251,7 @@ public class UserInterface {
                 System.out.println("You killed " + enemy.getShortName() + ", looks like he dropped his weapon.");
             }
         }
-        if(attackOutcome.getWeapon() instanceof RangedWeapon){
-            System.out.println("You have " + attackOutcome.getWeapon().getUsesLeftText());
-        }
+        System.out.println(attackOutcome.getWeapon().getUsesLeftText());
     }
 
     public void attack() {
@@ -300,9 +296,7 @@ public class UserInterface {
 
             case NOT_FOUND -> System.out.println("Did not find that enemy.");
         }
-        if(attackOutcome.getWeapon() instanceof RangedWeapon){
-            System.out.println("You have " + attackOutcome.getWeapon().getUsesLeftText());
-        }
+            System.out.println(attackOutcome.getWeapon().getUsesLeftText());
     }
 
     public void lookEnemies() {
@@ -313,6 +307,14 @@ public class UserInterface {
                 System.out.println(enemy.getDescription());
             }
         } else System.out.println("There are no enemies in this room.");
+    }
+    public void allinfo(Room lastRoom){
+        if(lastRoom != adventure.getPlayer().getCurrentRoom()){
+            lookRoom();
+            lookRoomItems();
+            healthStatus();
+            adventure.getPlayer().setLastRoom(adventure.getPlayer().getCurrentRoom());
+        }
     }
 
 }

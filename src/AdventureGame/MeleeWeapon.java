@@ -22,6 +22,6 @@ public class MeleeWeapon extends Weapon {
 
     @Override
     public String getUsesLeftText() {
-        return "infinite uses left";
+        return "";
     }
 }

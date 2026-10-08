@@ -7,6 +7,7 @@ public class Player {
     private ArrayList<Item> inventory;
     private int health = 100;
     private Weapon equipped;
+    private Room lastRoom;
 
     public void setEquipped(Weapon equipped) {
         this.equipped = equipped;
@@ -14,6 +15,14 @@ public class Player {
 
     public Room getCurrentRoom() {
         return currentRoom;
+    }
+
+    public Room getLastRoom() {
+        return lastRoom;
+    }
+
+    public void setLastRoom(Room lastRoom) {
+        this.lastRoom = lastRoom;
     }
 
     public ArrayList<Item> getInventory() {
@@ -38,6 +47,7 @@ public class Player {
         };
 
         if (desiredRoom != null) {
+            setLastRoom(currentRoom);
             currentRoom = desiredRoom;
             return true;
         } else {
