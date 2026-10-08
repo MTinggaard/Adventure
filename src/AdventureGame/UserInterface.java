@@ -251,7 +251,9 @@ public class UserInterface {
                 System.out.println("You killed " + enemy.getShortName() + ", looks like he dropped his weapon.");
             }
         }
-        System.out.println(attackOutcome.getWeapon().getUsesLeftText());
+        if (adventure.getPlayer().getEquipped() != null) {
+            System.out.println(attackOutcome.getWeapon().getUsesLeftText());
+        }
     }
 
     public void attack() {
@@ -296,7 +298,9 @@ public class UserInterface {
 
             case NOT_FOUND -> System.out.println("Did not find that enemy.");
         }
+        if (adventure.getPlayer().getEquipped() != null) {
             System.out.println(attackOutcome.getWeapon().getUsesLeftText());
+        }
     }
 
     public void lookEnemies() {
@@ -308,8 +312,9 @@ public class UserInterface {
             }
         } else System.out.println("There are no enemies in this room.");
     }
-    public void allinfo(Room lastRoom){
-        if(lastRoom != adventure.getPlayer().getCurrentRoom()){
+
+    public void allinfo(Room lastRoom) {
+        if (lastRoom != adventure.getPlayer().getCurrentRoom()) {
             lookRoom();
             lookRoomItems();
             healthStatus();
