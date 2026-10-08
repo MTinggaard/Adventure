@@ -246,9 +246,9 @@ public class UserInterface {
             }
 
             case ENEMY_KILLED -> {
-                enemy.dropItem();
+                System.out.println("You killed " + enemy.getShortName() + ", looks like he dropped his " + enemy.getWeapon().getShortName() + " (damage per hit: " +  enemy.getWeapon().getDamage() + ")");
                 adventure.getCurrentRoom().removeEnemy(enemy);
-                System.out.println("You killed " + enemy.getShortName() + ", looks like he dropped his weapon.");
+                enemy.dropItem();
             }
         }
         if (adventure.getPlayer().getEquipped() != null) {
@@ -290,9 +290,9 @@ public class UserInterface {
 
             case ENEMY_KILLED -> {
                 if (enemy != null) {
+                    System.out.println("You killed " + enemy.getShortName() + ", looks like he dropped his " + enemy.getWeapon().getShortName() + " damage: " +  enemy.getWeapon().getDamage());
                     enemy.dropItem();
                     adventure.getCurrentRoom().removeEnemy(enemy);
-                    System.out.println("You killed " + enemy.getShortName() + ", looks like he dropped his weapon.");
                 }
             }
 
