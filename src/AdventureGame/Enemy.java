@@ -17,10 +17,16 @@ public class Enemy {
         this.room = room;
     }
 
-    public void attack(Player player){
-        if (weapon.canUse()){
+    public AttackOutcome attack(Player player){
+
+        if(!weapon.canUse()){
+            return new AttackOutcome(AttackResult.NO_AMMUNITION, weapon);
+        } else {
             player.hit(weapon.getDamage());
+            weapon.use();
+            return new AttackOutcome(AttackResult.ATTACKED, weapon);
         }
+
     }
 
     public boolean isDead(){

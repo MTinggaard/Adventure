@@ -5,6 +5,7 @@ import java.util.ArrayList;
 public class Adventure {
     private Player player = new Player();
     private Map map = new Map();
+    private AttackSequence attackSequence = new AttackSequence();
 
     public void startGame() {
         map.buildMap();
@@ -69,7 +70,11 @@ public class Adventure {
     }
 
     public AttackOutcome attack(){
-        return player.attack();
+        return attackSequence.attackSequence(player);
+    }
+
+    public AttackOutcome attack(String enemyShortname){
+        return attackSequence.attackSequence(player, enemyShortname);
     }
 
 }

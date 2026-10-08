@@ -118,11 +118,11 @@ public class Player {
     public EquipOutcome equip(String name) {
         Item foundItem = null;
         for (Item item : inventory) {
-            if (item.getShortName().equals(name)){
+            if (item.getShortName().equals(name)) {
                 foundItem = item;
             }
         }
-        if(!(foundItem instanceof Weapon) && foundItem != null){
+        if (!(foundItem instanceof Weapon) && foundItem != null) {
             return new EquipOutcome(EquipResult.NOT_WEAPON);
         }
         for (Item weapon : inventory) {
@@ -140,23 +140,26 @@ public class Player {
         return equipped;
     }
 
-    public AttackOutcome attack() {
+    public AttackOutcome attack(Enemy enemy) {
         if (equipped == null) {
             return new AttackOutcome(AttackResult.NOT_EQUIPPED, null);
         } else if (!equipped.canUse()) {
             return new AttackOutcome(AttackResult.NO_AMMUNITION, equipped);
         }
         equipped.use();
+        if (enemy != null) {
+            enemy.hit(equipped.getDamage());
+        }
         return new AttackOutcome(AttackResult.ATTACKED, equipped);
     }
 
 
-    public void hit(int damage){
+    public void hit(int damage) {
         health -= damage;
     }
 
-    public boolean isDead(){
-        if(health <= 0){
+    public boolean isDead() {
+        if (health <= 0) {
             return true;
         }
         return false;

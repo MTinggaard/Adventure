@@ -222,91 +222,86 @@ public class UserInterface {
     }
 
     public void attack(String shortName) {
-        AttackOutcome attackOutcome;
-        if (adventure.getCurrentRoom().findEnemy(shortName) != null) {
-            attackOutcome = adventure.attack();
-        } else attackOutcome = new AttackOutcome(AttackResult.NOT_FOUND, null);
+        Enemy enemy = adventure.getCurrentRoom().findEnemy(shortName);
+        AttackOutcome attackOutcome = adventure.attack(shortName);
 
         switch (attackOutcome.getResult()) {
-            case AttackResult.NOT_EQUIPPED -> {
-                System.out.println("No weapon equipped.");
-            }
-            case AttackResult.NO_AMMUNITION -> {
-                System.out.println("No ammunition left.");
-            }
-            case AttackResult.ATTACKED -> {
-                Enemy enemy = adventure.getCurrentRoom().findEnemy(shortName);
+            case NOT_EQUIPPED -> System.out.println("No weapon equipped.");
 
-                if (enemy != null) {
-                    String enemyWeaponShortname = enemy.getWeapon().getShortName();
-                    enemy.hit(attackOutcome.getWeapon().getDamage());
-                    System.out.println("You " + attackOutcome.getWeapon().getAttackVerb() + " " + attackOutcome.getWeapon().getLongName());
-                    System.out.println("You have " + attackOutcome.getWeapon().getUsesLeftText());
-                    if (!enemy.isDead()) {
-                        System.out.println(enemy.getShortName() + " got hit current health is now: " + enemy.getHealth());
-                        if (enemy.getWeapon().canUse()) {
-                            enemy.attack(adventure.getPlayer());
-                            enemy.getWeapon().use();
-                        } else {
-                            System.out.println("enemy tried to attack but does not have anymore ammunition");
-                        }
-                        System.out.println(enemy.getShortName() + " attacked you");
-                        lookHealth();
-                    } else if (enemy.isDead()) {
-                        adventure.getCurrentRoom().removeEnemy(enemy);
-                        enemy.dropItem();
-                        System.out.println("You killed " + enemy.getShortName());
-                        System.out.println(enemy.getShortName() + " dropped " + enemyWeaponShortname);
-                    }
+            case NO_AMMUNITION -> System.out.println("No ammunition left.");
+
+            case NOT_FOUND -> System.out.println("Did not find that enemy.");
+
+            case ATTACKED, PLAYER_KILLED -> {
+                System.out.println("You " + attackOutcome.getWeapon().getAttackVerb() + " and hit " + enemy.getShortName());
+
+                if (attackOutcome.getCounterAttackResult() == AttackResult.ATTACKED) {
+                    System.out.println(enemy.getShortName() + " " + enemy.getWeapon().getAttackVerb() + " and hit you");
+                    System.out.println("You lost " + enemy.getWeapon().getDamage() + " hp");
+                } else if (attackOutcome.getCounterAttackResult() == AttackResult.NO_AMMUNITION) {
+                    System.out.println("Enemy tried to attack but had no ammunition left.");
+                }
+
+                if (attackOutcome.getResult() == AttackResult.PLAYER_KILLED) {
+                    System.out.println("You died.");
                 }
             }
-            case AttackResult.NOT_FOUND -> System.out.println("Did not find that enemy");
+
+            case ENEMY_KILLED -> {
+                enemy.dropItem();
+                adventure.getCurrentRoom().removeEnemy(enemy);
+                System.out.println("You killed " + enemy.getShortName() + ", looks like he dropped his weapon.");
+            }
+        }
+        if(attackOutcome.getWeapon() instanceof RangedWeapon){
+            System.out.println("You have " + attackOutcome.getWeapon().getUsesLeftText());
         }
     }
 
     public void attack() {
+        Enemy enemy = null;
+        if (!adventure.getCurrentRoom().getEnemies().isEmpty()) {
+            enemy = adventure.getCurrentRoom().getEnemies().getFirst();
+        }
+
         AttackOutcome attackOutcome = adventure.attack();
 
         switch (attackOutcome.getResult()) {
-            case AttackResult.NOT_EQUIPPED -> {
-                System.out.println("No weapon equipped.");
-            }
-            case AttackResult.NO_AMMUNITION -> {
-                System.out.println("No ammunition left.");
-            }
-            case AttackResult.ATTACKED -> {
-                Enemy enemy;
-                if (!adventure.getCurrentRoom().getEnemies().isEmpty()) {
-                    enemy = adventure.getCurrentRoom().getEnemies().getFirst();
-                } else {
-                    enemy = null;
-                }
+            case NOT_EQUIPPED -> System.out.println("No weapon equipped.");
 
+            case NO_AMMUNITION -> System.out.println("No ammunition left.");
+
+            case ATTACKED, PLAYER_KILLED -> {
                 if (enemy != null) {
-                    String enemyWeaponShortname = enemy.getWeapon().getShortName();
-                    enemy.hit(attackOutcome.getWeapon().getDamage());
-                    System.out.println("You " + attackOutcome.getWeapon().getAttackVerb() + " " + attackOutcome.getWeapon().getLongName());
-                    System.out.println("You have " + attackOutcome.getWeapon().getUsesLeftText());
-                    if (!enemy.isDead()) {
-                        System.out.println(enemy.getShortName() + " got hit current health is now: " + enemy.getHealth());
-                        if (enemy.getWeapon().canUse()) {
-                            enemy.attack(adventure.getPlayer());
-                            enemy.getWeapon().use();
-                        } else {
-                            System.out.println("enemy tried to attack but does not have anymore ammunition");
-                        }
-                        System.out.println(enemy.getShortName() + " attacked you");
-                        lookHealth();
-                    } else if (enemy.isDead()) {
-                        adventure.getCurrentRoom().removeEnemy(enemy);
-                        enemy.dropItem();
-                        System.out.println("You killed " + enemy.getShortName());
-                        System.out.println(enemy.getShortName() + " dropped " + enemyWeaponShortname);
+                    System.out.println("You " + attackOutcome.getWeapon().getAttackVerb() + " and hit " + enemy.getShortName());
+
+                    if (attackOutcome.getCounterAttackResult() == AttackResult.ATTACKED) {
+                        System.out.println(enemy.getShortName() + " " + enemy.getWeapon().getAttackVerb() + " and hit you");
+                        System.out.println("You lost " + enemy.getWeapon().getDamage() + " hp");
+                    } else if (attackOutcome.getCounterAttackResult() == AttackResult.NO_AMMUNITION) {
+                        System.out.println("Enemy tried to attack but had no ammunition left.");
                     }
                 } else {
-                    System.out.println("You " + adventure.getPlayer().getEquipped().getAttackVerb() + " into nothing");
+                    System.out.println("You attacked the air.");
+                }
+
+                if (attackOutcome.getResult() == AttackResult.PLAYER_KILLED) {
+                    System.out.println("You died.");
                 }
             }
+
+            case ENEMY_KILLED -> {
+                if (enemy != null) {
+                    enemy.dropItem();
+                    adventure.getCurrentRoom().removeEnemy(enemy);
+                    System.out.println("You killed " + enemy.getShortName() + ", looks like he dropped his weapon.");
+                }
+            }
+
+            case NOT_FOUND -> System.out.println("Did not find that enemy.");
+        }
+        if(attackOutcome.getWeapon() instanceof RangedWeapon){
+            System.out.println("You have " + attackOutcome.getWeapon().getUsesLeftText());
         }
     }
 

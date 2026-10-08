@@ -5,4 +5,6 @@ public enum AttackResult {
     NO_AMMUNITION,
     ATTACKED,
     NOT_FOUND,
+    ENEMY_KILLED,
+    PLAYER_KILLED,
 }
