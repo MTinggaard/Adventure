@@ -136,10 +136,13 @@ public class UserInterface {
 
     private void help() {
         System.out.println("Below is a list of useable commands:");
+        System.out.println("Underlined words are keys to the specific object");
         System.out.println("Direction commands:");
         System.out.println(" - go north\n - go east\n - go south\n - go west");
         System.out.println("Item commands:");
         System.out.println(" - take <item>\n - drop <item>\n - look inventory\n - consume <consumable>\n - eat <consumable>\n - drink <consumable>");
+        System.out.println("Combat:");
+        System.out.println(" - equip <weapon>\n - attack\n - attack <enemy>");
         System.out.println("Misc:");
         System.out.println(" - look\n - health\n - help\n - look inventory\n - exit");
         position.mapPosition();
