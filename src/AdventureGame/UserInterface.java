@@ -11,7 +11,7 @@ public class UserInterface {
         adventure.startGame();
 
 
-        while (!adventure.getPlayer().isDead()) {
+        while (!adventure.getPlayer().isDead() || adventure.getMap().getBossRoom().getEnemies().isEmpty()) {
             Thread.sleep(1000);
             allInfo(adventure.getPlayer().getLastRoom());
 
@@ -25,11 +25,12 @@ public class UserInterface {
 
             if (!parseInput(command)) {
                 System.out.println("There is no door in that direction");
-                Thread.sleep(1000);
             }
         }
         if (adventure.getPlayer().isDead()) {
             System.out.println("You've died. Thank you for playing");
+        } else if (adventure.getMap().getBossRoom().getEnemies().isEmpty()) {
+            System.out.println("Congratulation you've won the game. Enjoy this: https://youtu.be/P6antjcBFZ4?si=Y7-AvSb_-N_crM_U");
         } else System.out.println("Goodbye!");
     }
 
@@ -243,10 +244,6 @@ public class UserInterface {
                 } else if (attackOutcome.getCounterAttackResult() == AttackResult.NO_AMMUNITION) {
                     System.out.println("Enemy tried to attack but had no ammunition left.");
                 }
-
-                if (attackOutcome.getResult() == AttackResult.PLAYER_KILLED) {
-                    System.out.println("You died.");
-                }
             }
 
             case ENEMY_KILLED -> {
@@ -255,7 +252,7 @@ public class UserInterface {
                 enemy.dropItem();
             }
         }
-        if (adventure.getPlayer().getEquipped() != null) {
+        if (adventure.getPlayer().getEquipped() != null && !adventure.getPlayer().isDead()) {
             System.out.println(attackOutcome.getWeapon().getUsesLeftText());
         }
     }
@@ -286,10 +283,6 @@ public class UserInterface {
                 } else {
                     System.out.println("You attacked the air.");
                 }
-
-                if (attackOutcome.getResult() == AttackResult.PLAYER_KILLED) {
-                    System.out.println("You died.");
-                }
             }
 
             case ENEMY_KILLED -> {
@@ -302,7 +295,7 @@ public class UserInterface {
 
             case NOT_FOUND -> System.out.println("Did not find that enemy.");
         }
-        if (adventure.getPlayer().getEquipped() != null) {
+        if (adventure.getPlayer().getEquipped() != null && !adventure.getPlayer().isDead()) {
             System.out.println(attackOutcome.getWeapon().getUsesLeftText());
         }
     }
@@ -320,7 +313,6 @@ public class UserInterface {
     public void allInfo(Room lastRoom) {
         if (lastRoom != adventure.getPlayer().getCurrentRoom()) {
             lookRoom();
-            lookRoomItems();
             healthStatus();
             adventure.getPlayer().setLastRoom(adventure.getPlayer().getCurrentRoom());
         }

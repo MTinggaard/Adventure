@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 public class Map {
     private Room startRoom;
+    private Room bossRoom;
     private ArrayList<Room> rooms = new ArrayList<>();
 
     public void buildMap(){
@@ -21,7 +22,7 @@ public class Map {
         Room room3 = new Room("Classroom E212", "Something doesn't seem right, this door dont go to this classroom. The classroom is full of sleeping students, what is going on? I need to find some clues.", new ArrayList<Item>(), new ArrayList<Enemy>());
         rooms.add(room3);
         room3.addItem(new Food("beetroot","a white spotted" + underlined("beetroot") , 30));
-        room3.addEnemy(new Enemy("michael","hacker man " + underlined("micheal"),"a former teacher now has turned to the dark side and startet a new life as a hacker he uses a computer that shoot hacker beams",75,new RangedWeapon("computer","hacker computer",15,8),room3));
+        room3.addEnemy(new Enemy("michael","hacker man " + underlined("micheal"),"a former teacher now has turned to the dark side and started a new life as a hacker he uses a computer that shoot hacker beams",75,new RangedWeapon("computer","hacker computer",15,8),room3));
 
 
         Room room4 = new Room("Classroom A202","The small classroom is fully overgrown, you see birds flying around, almost like a jungle.", new ArrayList<Item>(), new ArrayList<Enemy>());
@@ -36,10 +37,10 @@ public class Map {
 
         Room room5 = new Room("Conference room", "As you enter the conference room, you see giant pillars made of marble as well as a throne made of bones. A chill runs down your spine, do you hear boss music?", new ArrayList<Item>(), new ArrayList<Enemy>());
         rooms.add(room5);
-        room5.addEnemy(new Enemy("david", underlined("david") + " protector of the throne", "a teacher you recognise has now turned into an giant orc like bieng",100, new MeleeWeapon("axe", "two-handed battleaxe", 25), room5));
+        room5.addEnemy(new Enemy("david", underlined("david") + " protector of the throne", "a teacher you recognise has now turned into an giant orc like being",300, new MeleeWeapon("axe", "two-handed battleaxe", 25), room5));
 
         Room room6 = new Room("Codelab", "You enter codelab and finally see a familiar face. Its Tobias!", new ArrayList<Item>(), new ArrayList<Enemy>());
-        room6.addItem(new Liquid("bottle","a " + underlined("bottel") + " filled with a bright glowing blue liquid",5));
+        room6.addItem(new Liquid("bottle","a " + underlined("bottle") + " filled with a bright glowing blue liquid",5));
         room6.addEnemy(new Enemy("tobias",underlined("tobias") + " the mage","a former programing teacher has now learned the language of magic",100,new RangedWeapon("wand","a magical wand of shooting",25,15),room6));
         rooms.add(room6);
 
@@ -80,6 +81,7 @@ public class Map {
         connectNorthSouth(room8, room5);
 
         startRoom = room1;
+        bossRoom = room5;
     }
 
     public String underlined(String word){
@@ -88,6 +90,10 @@ public class Map {
 
     public Room getStartRoom(){
         return startRoom;
+    }
+
+    public Room getBossRoom(){
+        return bossRoom;
     }
 
 
