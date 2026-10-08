@@ -13,7 +13,7 @@ public class UserInterface {
 
         while (!adventure.getPlayer().isDead()) {
             Thread.sleep(1000);
-            allinfo(adventure.getPlayer().getLastRoom());
+            allInfo(adventure.getPlayer().getLastRoom());
 
             System.out.print("Command -> ");
 
@@ -307,13 +307,13 @@ public class UserInterface {
         if (!adventure.getCurrentRoom().getEnemies().isEmpty()) {
             System.out.println("Enemies in the room:");
             for (Enemy enemy : adventure.getCurrentRoom().getEnemies()) {
-                System.out.println(enemy.getLongName());
+                System.out.println(enemy.getLongName() + " (" + enemy.getHealth() + " hp)");
                 System.out.println(enemy.getDescription());
             }
         } else System.out.println("There are no enemies in this room.");
     }
 
-    public void allinfo(Room lastRoom) {
+    public void allInfo(Room lastRoom) {
         if (lastRoom != adventure.getPlayer().getCurrentRoom()) {
             lookRoom();
             lookRoomItems();
