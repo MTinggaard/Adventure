@@ -8,7 +8,7 @@ public class Map {
 
     public void buildMap(){
         Room room1 = new Room("Classroom A379", "It's 8:30 early in the morning, sharp lights hits your eyes and jolts you awake. The room is full of emptiness, and something seems off.", new ArrayList<Item>(), new ArrayList<Enemy>());
-        room1.addItem(new Liquid("potion", "a bright red health potion in a glass bottle", 50));
+        room1.addItem(new Liquid("potion",  "a bright red health " + "\u001B[4m" + "potion" + "\u001B[0m" + " in a glass bottle", 50));
         room1.addItem(new Liquid("potion", "a bright red health potion in a glass bottle", 50));
         rooms.add(room1);
 
