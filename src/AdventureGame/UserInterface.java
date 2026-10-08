@@ -153,6 +153,7 @@ public class UserInterface {
         System.out.println("You are in " + adventure.getCurrentRoom().getName());
         System.out.println(adventure.getCurrentRoom().getDescription());
         lookEnemies();
+        lookRoomItems();
     }
 
     public void lookRoomItems() {
