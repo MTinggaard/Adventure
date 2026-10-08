@@ -8,13 +8,13 @@ public class Map {
 
     public void buildMap(){
         Room room1 = new Room("Classroom A379", "It's 8:30 early in the morning, sharp lights hits your eyes and jolts you awake. The room is full of emptiness, and something seems off.", new ArrayList<Item>(), new ArrayList<Enemy>());
-        room1.addItem(new Liquid("potion",  "a bright red health " + "\u001B[4m" + "potion" + "\u001B[0m" + " in a glass bottle", 50));
-        room1.addItem(new Liquid("potion", "a bright red health potion in a glass bottle", 50));
+        room1.addItem(new Liquid("potion",  "a bright red health " + underlined("potion") + " in a glass bottle", 50));
+        room1.addItem(new Liquid("potion", "a bright red health" + underlined("potion") + "in a glass bottle", 50));
         rooms.add(room1);
 
         Room room2 = new Room("3rd floor common area", "There are empty classrooms all around you, usually a space full of people. Where are all the people?", new ArrayList<Item>(), new ArrayList<Enemy>());
-        room2.addItem(new Liquid("coffee","burning hot coffee",40));
-        room2.addEnemy(new Enemy("mads","wise munk","a teacher you remember now a wise monk",100,new MeleeWeapon("knuckles","brass knuckles",20),room2));
+        room2.addItem(new Liquid("coffee","burning hot " + underlined("coffee"),40));
+        room2.addEnemy(new Enemy("mads",underlined("Mads") + "the wise monk","a teacher you remember now a wise monk",100,new MeleeWeapon("knuckles","brass knuckles",20),room2));
         rooms.add(room2);
 
 
@@ -82,7 +82,9 @@ public class Map {
         startRoom = room1;
     }
 
-
+    public String underlined(String word){
+       return "\u001B[4m" + word + "\u001B[0m";
+    }
 
     public Room getStartRoom(){
         return startRoom;
